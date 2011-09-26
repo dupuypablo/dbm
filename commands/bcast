@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+# broadcast an event to all players in in characters/players
+# bcast eventfile
+$WORLD = $ENV{'WORLD'};
+$chrs = `cat $WORLD/characters/players`;
+chomp($chrs);
+@pllist = split('\n',$chrs);
+$file = $ARGV[0];
+unless (-e $file) {
+ print "File $file Doesn't Exist!";
+ die;
+ } 
+  $date = `echo '' | tictac`;
+foreach $pl (@pllist)
+{
+  @col = split('\t',$pl);
+  $email = $col[0];
+  $name = $col[1];
+  print "$name...\n";
+  print `cat $file | sendmail $email '$name - $date'`;
+}
+$quitaenters = ':a;N;$!ba;s/\n/<br>/g';
+`cat $file| sed '$quitaenters' | log`;

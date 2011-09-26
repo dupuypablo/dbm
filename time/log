@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$chrs = `cat $WORLD/characters/players | cut -f2`;
+chomp($chrs);
+@chrslist = split('\n',$chrs);
+$re = join(',',@chrslist);
+#print $re;
+$re = "$ARGV[0]" if ($#ARGV == 0);
+$hs = `echo '' | tictac 3>&1 1>&- 2>&3 3>&- `;
+#print "$WORLD/log/$hs";
+`cat - | sed 's/^/$re\t/' >> $WORLD/log/$hs `;

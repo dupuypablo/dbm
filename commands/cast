@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+$|++;
+use Switch;
+if ($#ARGV == 1)
+{
+    $cast = $ARGV[1];
+    print STDERR "$ARGV[0] [$cast]:\n";
+}
+
+while (<STDIN>)
+{
+    last if ((/^\n/) && ($#ARGV != 1));
+$s = $_;
+$_ = $cast if ($_ == '*');
+if (s/(\d+)d(\d+)//)
+{
+#    print $3;
+    $str = 0;
+    $str += (int(rand()*$2+1)) for (1 .. $1);
+    while ( s/([\+\-\*\/x])(\d+)//)
+    {    
+        switch ($1){
+            case ("+")    {$str += $2}
+            case "-"    {$str -= $2}
+            case "*"    {$str *= $2}
+            case "x"    {$str *= $2}
+            case "/"    {$str = $str/$2}
+        }
+    }
+    $str = "$str$_";
+}else{
+    # Can do boundary checking in the future
+    # print $1 if ( /(\d+)/);
+    $str = $s;
+}
+
+print "$str";
+last if $#ARGV == 1;
+}

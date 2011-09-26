@@ -1,0 +1,15 @@
+#!/bin/perl
+use List::Util qw(first);
+$title = $ARGV[2];
+$row = $ARGV[3];
+open F, "<$ARGV[1]" or die $!;
+$first = <FILE>;
+@titles = split(" ",$first);
+my $element = first { /Fighter/ } @titles;
+print $element;
+while (<FILE>)
+{
+chomp;
+
+}
+

@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+$seasontunum{'primavera'} = 0;
+$seasontunum{'verano'} = 1;
+$seasontunum{'ocre'}   = 2;
+$seasontunum{'invierno'} = 3;
+@numtoseason = (sort { $seasontunum{$a} <=> $seasontunum{$b} } keys %seasontunum);
+
+$h = $ARGV[0];
+$d = $ARGV[1];
+$ns = $ARGV[2];
+$ns = $seasontunum{$ns} if !($ns =~ /^[+-]?\d+$/ );
+$y = $ARGV[3];
+
+$n=(($y*4+$ns)*91+$d)*24+$h;
+print "$n";

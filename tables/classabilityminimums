@@ -1,0 +1,7 @@
+Class	Fighter	Paladin	Ranger	Mage	Cleric	Druid	Thief	Bard
+str	9	12	13	3	3	3	3	3
+dex	3	3	13	3	3	3	9	12
+con	3	9	14	3	3	3	3	13
+int	3	3	3	9	3	3	3	13
+wis	3	13	14	3	9	12	3	3
+cha	3	17	3	3	3	15	3	15

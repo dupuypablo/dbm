@@ -1,0 +1,39 @@
+#!/usr/bin/perl
+$charname = 'murray';
+$WORLD = $ENV{'WORLD'};
+$file =  `cat $WORLD/public_html/historia.html`;
+@logs = split('\n',`ls $WORLD/log/`);
+$rows=$#logs+1;
+$file =~ s/insertCharacterName/$charname/;
+$file =~ s/insertNumberOfRaws/$rows/;
+
+  $datarow='';
+  my $i=-1;
+foreach $time (@logs)
+{
+$i++;
+print `printtime $time \n`;
+print $alllines=`cat $WORLD/log/$time`;
+@lines=split('\n',$alllines);
+foreach $l (@lines)
+{
+  @col = split('\t',$l);
+  $who = $col[0];
+  $txt = $col[1];
+  $txt=~ /([^\.]*)\./;
+  $tit = $1;
+  $hs=$time;
+  $h = ($hs % 24);
+  $min = int(($h-int($h))*60);
+  $d = int($hs/24);
+  $y = int($d/364);
+  $d = $d % 364;
+  
+  $val = $i;
+  $datarow =$datarow . "data.setValue($i, 0, new Date($y, 0, $d, $h, $min, 0));data.setValue($i, 1, $val);data.setValue($i, 2, '$tit');data.setValue($i, 3, '$txt');\n";
+  }
+}
+
+$file =~ s/insertdata/$datarow/;
+open FILE, ">", "$WORLD/public_html/hist.html" or die $!;
+print FILE $file;

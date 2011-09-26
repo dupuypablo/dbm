@@ -1,0 +1,50 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+
+$seasontunum{'primavera'} = 0;
+$seasontunum{'verano'} = 1;
+$seasontunum{'ocre'}   = 2;
+$seasontunum{'invierno'} = 3;
+@numtoseason = (sort { $seasontunum{$a} <=> $seasontunum{$b} } keys %seasontunum);
+
+$y = `cat $WORLD/time/year`;
+chomp($y);
+$s = `cat $WORLD/time/season`;
+chomp($s);
+$d = `cat $WORLD/time/day`;
+chomp($d);
+$h=0.0;
+$h = `cat $WORLD/time/hour`;
+chomp($h);
+$ns = $seasontunum{$s};
+
+$hs = `calchours $h $d $ns $y`;
+print `printtime $hs` . "";
+#print STDERR $hs;
+
+while(<>)
+{
+chomp;
+`echo '$_'| log` if /^[A-Z]/;
+$d=$d+$1 if /(-*\d+)d/;
+$h=$h + $1 if /(-*\d*\.*\d*)h/;
+$h=24+7 if /^n$/;
+
+#$minute=$h - int($h);
+$d = $d + int($h/24);
+$h = (($h*10) % 240)/10;
+$ns = $ns + int($d/91);
+$d = $d % 91; 
+$y = $y + int($ns / 4);
+$ns = $ns % 4;
+
+$hs = `calchours $h $d $ns $y`;
+print `printtime $hs` . "\n";
+
+`echo $y > $WORLD/time/year`;
+`echo $d > $WORLD/time/day`;
+`echo $h > $WORLD/time/hour`;
+`echo $numtoseason[$ns] > $WORLD/time/season`;
+
+}
+print STDERR $hs;

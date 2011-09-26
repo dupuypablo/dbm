@@ -1,0 +1,2 @@
+#get the email address from a character
+cat $WORLD/characters/players | grep $1 | cut -f1

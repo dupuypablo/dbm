@@ -1,0 +1,9 @@
+genPlayer	test function for generating characters
+bot/	directory with google talk bots
+cast	cast dices, command line or STDIN
+monster1/	example for a monster
+table/	humans and other tables
+pick	for picking up a value from a table
+prop	NO SE
+start	some variables like path
+tohit	attackand and target, calculates the tohit value

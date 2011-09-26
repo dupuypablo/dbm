@@ -1,0 +1,19 @@
+genPlayer	test function for generating characters
+bot/	directory with google talk bots
+cast	cast dices, command line or STDIN
+monster1/	example for a monster
+table/	humans and other tables
+pick	for picking up a value from a table: 'pick table - Alignment'
+prop	NO SE
+start	some variables like path
+tohit	attackand and target, calculates the tohit value
+wh	where is the character?
+statusplayer	print the status of a player
+addr	get the email address of a character
+log
+tictac
+printtime
+calchours
+bcast	bcast eventfile
+sendmail	sendmail mail titulo < textfile
+printlog	in STDOUT and public_html -> 84.202.68.46:8080/~bot/hist.html

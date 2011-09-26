@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+if ($#ARGV==1)
+{
+    $_ = `cat $ARGV[1] | grep $ARGV[0]=`;
+    s/$ARGV[0]=//;
+    print $_;
+}else{
+    while(<STDIN>)
+    {
+	chomp;
+	$_=`cat $_ | grep $ARGV[0]=`;
+	s/$ARGV[0]=//;
+	print $_;
+    }
+}

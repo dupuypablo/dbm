@@ -1,0 +1,23 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+
+$seasontunum{'primavera'} = 0;
+$seasontunum{'verano'} = 1;
+$seasontunum{'ocre'}   = 2;
+$seasontunum{'invierno'} = 3;
+@numtoseason = (sort { $seasontunum{$a} <=> $seasontunum{$b} } keys %seasontunum);
+
+$hs = $ARGV[0];
+
+$h = ($hs*10 % 240)/10;
+$d = int($hs/24);
+$ns = int($d/91);
+$d = $d % 91;
+$y = int($ns/4);
+$ns =  $ns % 4;
+@moon = ('',')','O','(');
+
+$mt = $moon[($d%30)/7];
+
+print "$h h, $d d [$mt], $numtoseason[$ns] $y\n";
+

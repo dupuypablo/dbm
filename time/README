@@ -1,0 +1,4 @@
+# year: years in current calendar
+# days: from season
+# season: spring, summer, fall, winter. Changes with 3x48=144
+# moon: calculates

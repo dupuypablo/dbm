@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {'packages':['annotatedtimeline']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+ var data = new google.visualization.DataTable();
+
+  data.addColumn('date', 'DateTime');
+  data.addColumn('number', 'insertCharacterName');
+  data.addColumn('string', 'Titulo');
+  data.addColumn('string', 'Descripcion');
+  data.addRows(insertNumberOfRaws);
+  insertdata 
+  
+  var chart = new google.visualization.AnnotatedTimeLine(
+      document.getElementById('chart_div'));
+  chart.draw(data, {'displayAnnotations': true, 'allowHtml': true, 'displayAnnotationsFilter':true, 'annotationsWidth': 40});
+}
+    </script>
+  </head>
+
+  <body>
+    // Note how you must specify the size of the container element explicitly!
+    <div id='chart_div' style='width: 800px; height: 600px;'></div>
+
+  </body>
+</html>

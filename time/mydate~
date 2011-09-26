@@ -1,0 +1,25 @@
+#!/bin/perl
+$WORLD = $ENV{'WORLD'};
+$numtoseason = ['spring','summer','fall','winter'];
+$seasontunum{'spring'} = 1;
+$seasontunum{'summer'} = 2;
+$seasontunum{'fall'}   = 3;
+$seasontunum{'winter'} = 4;
+
+$y = `cat $WORLD/time/year`;
+$s = `cat $WORLD/time/season`;
+$d = `cat $WORLD/time/day`;
+$ns = $seasontunum{$s};
+
+### update #####
+
+$ns = $ns + int($d/144);
+$d = $d % 144; 
+$y = $y + int($ns / 4);
+$ns = $ns % 4;
+
+`echo $y > $WORLD/time/year`;
+`echo $d > $WORLD/time/day`;
+`echo $numtoseason[$s] > $WORLD/time/year`;
+
+

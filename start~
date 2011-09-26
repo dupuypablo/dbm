@@ -1,0 +1,4 @@
+PATH=/home/hobbie/world:$PATH
+
+export PATH
+bash

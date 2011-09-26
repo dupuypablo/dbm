@@ -1,0 +1,1 @@
+find /home/hobbie -xdev -samefile $1

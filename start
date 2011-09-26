@@ -1,0 +1,5 @@
+WORLD=/home/bot
+PATH=$WORLD:$WORLD/commands:$WORLD/time:$PATH
+export WORLD
+export PATH
+bash

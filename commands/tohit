@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+$thac0=`pick $ARGV[1] - '^THAC0'`;
+chomp($thac0);
+$ac = `pick $ARGV[0] - '^AC'`;
+chomp($ac);
+$tohit = $thac0 - $ac;
+print STDERR "($thac0 - $ac =) ";
+print $tohit;

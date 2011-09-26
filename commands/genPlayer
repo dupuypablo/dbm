@@ -1,0 +1,71 @@
+#!/usr/bin/perl
+use Switch;
+    @race = ("Dwarf","Elf","Gnome","Half-elf","Halfling","Human");
+    @req = ([[8,18], [3,18], [6,18], [3,18], [7, 18], [3, 18]],
+            [[3,17], [6,18], [3,18], [6,18], [7, 18], [3, 18]],
+            [[11,18],[7,18], [8,18], [6,18], [10,18], [3, 18]],
+            [[3,18], [8,18], [6,18], [4,18], [6, 18], [3, 18]],
+            [[3,18], [3,18], [3,18], [3,18], [3, 17], [3, 18]],
+            [[3,17], [8,18], [3,18], [3,18], [3, 18], [3, 18]]  );
+
+print STDERR "Name:"; $name = <>;
+chomp($name);
+print STDERR "Text:"; $text = <>;
+chomp($text);
+$str = `cast Strength 3d6`;
+$dex = `cast Dexterity 3d6`;
+$con = `cast Constitution 3d6`;
+$int = `cast Intelligence 3d6`;
+$wis = `cast Wisdom 3d6`;
+$cha = `cast Charisma 3d6`;
+
+$choose=1;
+while (1)
+{
+print STDERR "1.$race[0]/2.$race[1]/3.$race[2]/4.$race[3]/5.$race[4]/6.$race[5]:";
+$r = <>-1;
+
+if (0 <= $r and $r <= ($#race)) {}else{next;}
+
+if (($str >= $req[0][$r][0]) and ($str <= $req[0][$r][1])) {
+if (($dex >= $req[1][$r][0]) and ($dex <= $req[1][$r][1])) {
+if (($con >= $req[2][$r][0]) and ($con <= $req[2][$r][1])) {
+if (($int >= $req[3][$r][0]) and ($int <= $req[3][$r][1])) {
+if (($wis >= $req[4][$r][0]) and ($wis <= $req[4][$r][1])) {
+if (($cha >= $req[5][$r][0]) and ($cha <= $req[5][$r][1])) {
+
+    last;
+}}}}}}
+
+}
+
+print STDERR "Level:"; $level = <>;
+
+switch ($r){
+    case 1 #dwarf
+    {
+        $age = `cast Age 5d6+40`;
+    }
+}
+
+
+#switch ($r) {
+#case 0
+#{
+
+#}
+$WORLD = $ENV{'WORLD'};
+print `mkdir $WORLD/characters/p$name`;
+print `ln -s $WORLD/characters/p$name`;
+open F, ">$WORLD/characters/p$name/.i";
+
+print F "name\t$name\n";
+print F "description\t$text\n";
+print F "race\t$race[$r]\n";
+print F "str\t$str\n";
+print F "dex\t$dex\n";
+print F "con\t$con\n";
+print F "int\t$int\n";
+print F "wis\t$wis\n";
+print F "cha\t$cha\n";
+close F;

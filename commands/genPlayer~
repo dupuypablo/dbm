@@ -1,0 +1,53 @@
+#!/bin/perl
+use Switch;
+    @race = ("Dwarf","Elf","Gnome","Half-elf","Halfling","Human");
+    @req = ([[8,18], [3,18], [6,18], [3,18], [7, 18], [3, 18]],
+            [[3,17], [6,18], [3,18], [6,18], [7, 18], [3, 18]],
+            [[11,18],[7,18], [8,18], [6,18], [10,18], [3, 18]],
+            [[3,18], [8,18], [6,18], [4,18], [6, 18], [3, 18]],
+            [[3,18], [3,18], [3,18], [3,18], [3, 17], [3, 18]],
+            [[3,17], [8,18], [3,18], [3,18], [3, 18], [3, 18]]  );
+
+print STDERR "Name:"; $name = <>;
+print STDERR "Text:"; $text = <>;
+$str = `cast Strength 3d6`;
+$dex = `cast Dexterity 3d6`;
+$con = `cast Constitution 3d6`;
+$int = `cast Intelligence 3d6`;
+$wis = `cast Wisdom 3d6`;
+$cha = `cast Charisma 3d6`;
+
+$choose=1;
+while (1)
+{
+print STDERR "1.$race[0]/2.$race[1]/3.$race[2]/4.$race[3]/5.$race[4]/6.$race[5]:";
+$r = <>-1;
+
+if (0 <= $r and $r <= ($#race)) {}else{next;}
+
+if (($str >= $req[0][$r][0]) and ($str <= $req[0][$r][1])) {
+if (($dex >= $req[1][$r][0]) and ($dex <= $req[1][$r][1])) {
+if (($con >= $req[2][$r][0]) and ($con <= $req[2][$r][1])) {
+if (($int >= $req[3][$r][0]) and ($int <= $req[3][$r][1])) {
+if (($wis >= $req[4][$r][0]) and ($wis <= $req[4][$r][1])) {
+if (($cha >= $req[5][$r][0]) and ($cha <= $req[5][$r][1])) {
+
+    last;
+}}}}}}
+
+}
+
+#switch ($r) {
+#case 0
+#{
+
+#}
+print "name\t$name";
+print "description\t$text";
+print "race\t$race[$r]\n";
+print "str\t$str\n";
+print "dex\t$dex\n";
+print "con\t$con\n";
+print "int\t$int\n";
+print "wis\t$wis\n";
+print "cha\t$cha\n";

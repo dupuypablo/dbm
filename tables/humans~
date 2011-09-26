@@ -1,0 +1,10 @@
+Title	Caveman	Adventurer	Bandit	Barbarian	Berserker	Farmer	Gentry	Knight	Mercenary	Fisherman	Trader	Middle Class	Peasant	Pilgrim	Pirate	Police	Priest	Sailor	Slaver	Soldier	Thief	Tradesman	Tribesman	Wizard
+Frequency	11	4	65	11	11	65	65	4	11	65	65	65	65	20	65	20	4	65	65	20	65	65	11	4
+Treasure	0	Nil	J,N,Q	L,M	Nil	Nil	J,K,L,M,N,Q	L,M	L,M	1d6x10sp	10d100 gp	J,M,N	0	I	J,M,N,Q	1d6x10 sp	J,K,M	L,M	0	I	J,M,N,Q	1d100 gp	0	L,N,Q
+Alignment	NN	Any	CE	Any	NN	NG	Any	LG,LN,LE	Any	Any	Any	Any	Any	Any	LE,NE,CE	LG,LN,LE	Any	Any	Any	Any	LE,NE,CE	Any	Any	Any
+Number	10d10	1d8	20d10	30d10	10d10	1d20	1d20	1d4	10d10	4d20	3d10x10	2d20	1d100	10d10	30d10	2d10	1d8	4d20	1d100	10d10	1d8	2d6	10d10	1d8
+AC	8	Any	1d5+5	1d5+5	1d5+5	10	10	1d2x2	1d4+3	1d3+7	1d6+4	10	10	1d3+7	1d5+5	1d4+3	10	1d3+7	10	1d5+3	1d3+7	10	8	10
+HP	1d6	Any	1d6	1d6	1d6	1d6	1d6	2d8	2d4	1d6	1d6	1d6	1d6	1d6	1d6	1d6	1d6	1d6	1d6	1d6	2d8	1d6	1d6	2d8
+THAC0	19	Any	20	20	20	20	20	19	20	20	20	20	20	20	20	20	20	20	20	20	20	20	20	20
+Morale	9	Any	9	9	20	9	9	14	12	9	9	9	9	9	9	10	8	9	9	1d3+9	10	8	9	10
+XP	15	Any	15	15	15	15	15	100	15	15	15	15	15	15	15	15	15	15	15	15	100	15	15	100

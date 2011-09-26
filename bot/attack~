@@ -1,0 +1,10 @@
+#!/bin/perl
+$|++;
+
+print "Objetivo de tu ataque:";
+$t = <stdin>;
+chomp($t);
+$i = `cast 'Atacas a $t. Ahora tu iniciativa' 1d10`;
+print "Tu iniciativa es $i.";
+$hd = `cast 'Finalmente tu hit dice' 1d20`;
+print "Hit dice: $hd";

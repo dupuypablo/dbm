@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+# pick tablefile columntitle rowtag
+
+use List::Util qw(first);
+my $mytitle = $ARGV[1];
+my $row = $ARGV[2];
+open F, "<$ARGV[0]" or die $!;
+$first = <F>;
+@titles = split("\t",$first);
+$i=-1;foreach (@titles) {$i++; last if (/$mytitle/);}
+die if ($i > $#titles);
+print "$titles[$i]\n" if ($titles[0] =~ /$row/);
+
+while (<F>)
+{
+chomp;
+@titles = split("\t",$_);
+print "$titles[$i]\n" if ($titles[0] =~ /$row/);
+}
+

@@ -1,0 +1,2 @@
+#get the complete character name giving an email, or part of the name, print the status of that character
+cat `cat $WORLD/characters/players | grep $1 | cut -f2` | sed "s/\t/=/"

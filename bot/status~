@@ -1,0 +1,6 @@
+#!/bin/perl
+
+print "dame tu nombre \n\n";
+$n = <stdin>;
+chomp($n);
+print "Gracias $n, que tengas buen dia\n";
