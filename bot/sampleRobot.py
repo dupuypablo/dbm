@@ -34,6 +34,23 @@ from subprocess import *
 from PyGtalkRobot import GtalkRobot
 
 ############################################################################################################################
+def readFile(fileHandle): 
+
+     line = fileHandle.readline() 
+     dictName = {} 
+
+     while line: 
+         splitted = line.split("\t")
+	 key = splitted[0].split("@")[0]
+	 print key
+	 dictName[key] = splitted[1].rstrip('\n') 
+         line = fileHandle.readline() 
+
+     return dictName
+     
+class UserClass:
+    def __init__(self,username):
+      self.user = username
 
 class SampleBot(GtalkRobot):
     
@@ -63,7 +80,9 @@ class SampleBot(GtalkRobot):
         '''(available|online|on|busy|dnd|away|idle|out|off|xa)( +(.*))?$(?i)'''
         show = args[0]
         status = args[1]
-        jid = user.getStripped()       
+        jid = user.getStripped() 
+	print "soy:", user.getNode(), " (((())))\n"  
+	self.u[user.getNode()].user = user.getNode()   
         print jid
         # Verify if the user is the Administrator of this bot
         if re.search('dupuypablo', jid).group(0) == 'dupuypablo':
@@ -85,21 +104,56 @@ class SampleBot(GtalkRobot):
     def command_003_status(self, user, message, args):
         #status
         '''(atacar)( +(.*))?$(?i)'''
-        self.p = Popen(['./attack'], stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
-        print self.p
-        thread.start_new_thread( self.run, (self.p,user,message, args ) )
+        self.u[user.getNode()].p = Popen(['./attack'], stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
+	self.u[user.getNode()].user = user.getNode()
+        print self.u[user.getNode()].p
+        thread.start_new_thread( self.run, (self.u[user.getNode()].p,user,message, args ) )
 
-    #This method is used to response users.
+    def command_004_status(self, user, message, args):
+        #status
+        '''(nuevo personaje)( +(.*))?$(?i)'''
+        self.u[user.getNode()].p = Popen(['genPlayer'], stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
+        self.u[user.getNode()].user = user.getNode()
+	print self.u[user.getNode()].p
+        thread.start_new_thread( self.run, (self.u[user.getNode()].p,user,message, args ) )
+
+
+    def command_005_status(self, user, message, args):
+        #status
+        '''(hola)( +(.*))?$(?i)'''
+	self.replyMessage(user, "Hola {}".format(self.names[user.getNode()]))
+
+	
+    def command_006_status(self, user, message, args):
+        #status
+        '''(info)( +(.*))?$(?i)'''
+	f = open('{}/characters/p{}/.i'.format(os.environ['WORLD'],self.names[user.getNode()]), 'r')	
+	self.replyMessage(user, ("".join(f.readlines())).replace("\t",": " ))
+   
+
+    def command_099_help(self, user, message, args):
+        #status
+        '''(help)( +(.*))?$(?i)'''
+	self.replyMessage(user, "hola|nuevo personaje|atacar|info")
+  
+   #This method is used to response users.
     def command_100_default(self, user, message, args):
         '''.*?(?s)(?m)'''
         self.replyMessage(user, time.strftime("%Y-%m-%d %a %H:%M:%S", time.gmtime()))
         print '...'
-        print user
+        print user.getNode()
+	#help(user);
         print message
-        if hasattr(self, 'p'):
+	if not hasattr(self,'u'):
+	  myu = UserClass(user.getNode());
+	  self.u={ user.getNode(): myu }
+	if not user.getNode() in self.u:
+	  myu = UserClass(user.getNode());
+	  self.u[user.getNode()] = myu;
+        if hasattr(self.u[user.getNode()], 'p'):
             print 'si!'
-            if self.p.poll() is None:
-                self.p.stdin.write(message+"\n")
+            if self.u[user.getNode()].p.poll() is None:
+                self.u[user.getNode()].p.stdin.write(message+"\n")
    
 ############################################################################################################################
 if __name__ == "__main__":
@@ -114,6 +168,8 @@ if __name__ == "__main__":
     #    bot.sock.settimeout(.1)
     #except:
     bot.setState('available', "Simple Gtalk Robot")
+    import os
+    f = open('{}/characters/players'.format(os.environ['WORLD']), 'r')
+    bot.names = readFile(f)
     bot.start("dungeon.bot.master@gmail.com", "pablodupuy")
-    
 

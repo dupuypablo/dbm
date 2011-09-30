@@ -1,4 +1,4 @@
-#!/bin/perl
+#!/usr/bin/perl
 $|++;
 
 print "Objetivo de tu ataque:\n";

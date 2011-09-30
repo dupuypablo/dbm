@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0] if ($#ARGV == 0); #name of the guy
+chop($who) if (substr($who,-1,1) eq '/');
+if (-e "$who/.i")
+{
+  $mhp=`cat $who/.i | grep  HP | cut -f2`;
+}else{
+  $mhp = 0;
+}
+chomp($mhp);
+$mhp = 0 if ($mhp eq '');
+
+if (-e "$who/.hp")
+{
+  $hp=`cat $who/.hp`;
+}else{
+  $hp=$mhp;
+}
+
+chomp($hp);
+$hp = 0 if ($hp eq '');
+print "$hp\n";
+
+while (<STDIN>)
+{
+  print $hp = $hp + $_,"($mhp)\n";
+  print "=",$hp=$mhp,"\n" if ($hp > $mhp);
+}
+
+`echo $hp > $who/.hp`;
