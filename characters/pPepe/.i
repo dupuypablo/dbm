@@ -1,9 +1,10 @@
-name	Pepe
-description	soy pepe
+name	Pepe_Lotudo
+description	sasa
 race	Human
-str	13
-dex	7
-con	14
-int	4
-wis	10
-cha	16
+str	11
+dex	10
+con	9
+int	15
+wis	8
+cha	13
+class	Mage

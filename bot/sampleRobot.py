@@ -121,6 +121,16 @@ class SampleBot(GtalkRobot):
     def command_005_status(self, user, message, args):
         #status
         '''(hola)( +(.*))?$(?i)'''
+	if not hasattr(self,'u'):
+	  myu = UserClass(user.getNode());
+	  self.u={ user.getNode(): myu }
+	  print "aca1", user.getNode(), self.u;
+	if not user.getNode() in self.u:
+	  print "aca2";
+	  myu = UserClass(user.getNode());
+	  self.u[user.getNode()] = myu;
+	print "Alguien dijo Hola", user.getNode(), self.u;
+	
 	self.replyMessage(user, "Hola {}".format(self.names[user.getNode()]))
 
 	
@@ -147,9 +157,13 @@ class SampleBot(GtalkRobot):
 	if not hasattr(self,'u'):
 	  myu = UserClass(user.getNode());
 	  self.u={ user.getNode(): myu }
+	  print "aca1", user.getNode(), self.u;
 	if not user.getNode() in self.u:
+#	  print "aca2";
 	  myu = UserClass(user.getNode());
 	  self.u[user.getNode()] = myu;
+#	print "aca3", user.getNode(), self.u;
+
         if hasattr(self.u[user.getNode()], 'p'):
             print 'si!'
             if self.u[user.getNode()].p.poll() is None:
@@ -171,5 +185,5 @@ if __name__ == "__main__":
     import os
     f = open('{}/characters/players'.format(os.environ['WORLD']), 'r')
     bot.names = readFile(f)
-    bot.start("dungeon.bot.master@gmail.com", "pablodupuy")
+    bot.start("dungeon.bot.master@gmail.com", "pablodupuy2")
 

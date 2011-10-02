@@ -10,10 +10,6 @@ use Switch;
     @classes = ("Fighter","Paladin","Ranger","Mage","Specialist","Cleric","Druid","Thief","Bard");
 
 $WORLD = $ENV{'WORLD'};
-print STDERR "Nombre:\n"; $name = <>;
-chomp($name);
-print STDERR "Breve descripcion:\n"; $text = <>;
-chomp($text);
 print STDERR $str = `cast Strength 3d6`,"\n";
 print STDERR $dex = `cast Dexterity 3d6`,"\n";
 print STDERR $con = `cast Constitution 3d6`,"\n";
@@ -64,6 +60,10 @@ if ($cha >= `pick $WORLD/tables/classabilityminimums $classes[$c] cha`)  {
 }}}}}}
 
 }
+print STDERR "Nombre:\n"; $name = <>;
+chomp($name);
+print STDERR "Breve descripcion:\n"; $text = <>;
+chomp($text);
 
 print STDERR "Level:\n"; $level = <>;
 
@@ -82,7 +82,7 @@ switch ($r){
 #}
 
 print `mkdir $WORLD/characters/p$name`;
-print `ln -s $WORLD/characters/p$name`;
+#%print `ln -s $WORLD/characters/p$name`;
 open F, ">$WORLD/characters/p$name/.i";
 
 print F "name\t$name\n";
@@ -94,4 +94,5 @@ print F "con\t$con\n";
 print F "int\t$int\n";
 print F "wis\t$wis\n";
 print F "cha\t$cha\n";
+print F "class\t$classes[$c]\n";
 close F;
