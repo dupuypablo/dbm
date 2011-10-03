@@ -18,6 +18,8 @@ bcast	bcast eventfile
 sendmail	sendmail mail titulo < textfile
 printlog	in STDOUT and public_html -> 84.202.68.46:8080/~bot/hist.html
 hp	returns and manipulate hit points for players
+sumxp
+
 resolve	ordena por iniciativa, calcula to hit, lee hit points.
 
 TODO: que el attack de google talk, o linux, lean el arma default, o ataque preseleccionado del animal.

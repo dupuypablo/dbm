@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+#getab str Murray
+$name = $ARGV[0];
+$val = `pick $ARGV[1]/.i - $name`;
+$race = `pick $ARGV[1]/.i - race`;
+$val = $val -1 if (($race =~ /Halfling/) && ($name =~ /str/));
+$val = $val +1 if (($race =~ /Halfling/) && ($name =~ /dex/));
+$val = $val -1 if (($race =~ /Gnome/) && ($name =~ /wis/));
+$val = $val +1 if (($race =~ /Gnome/) && ($name =~ /int/));
+$val = $val -1 if (($race =~ /Elf/) && ($name =~ /con/));
+$val = $val +1 if (($race =~ /Elf/) && ($name =~ /dex/));
+$val = $val -1 if (($race =~ /Dwarf/) && ($name =~ /cha/));
+$val = $val +1 if (($race =~ /Dwarf/) && ($name =~ /con/));
+
+print $val;

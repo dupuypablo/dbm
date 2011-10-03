@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0] if ($#ARGV == 0); #name of the guy
+chop($who) if (substr($who,-1,1) eq '/');
+
+if (-e "$who/.xp")
+{
+  $xp=`cat $who/.xp`;
+}
+
+chomp($xp);
+$xp = 0 if ($xp eq '');
+print "$xp\n";
+
+while (<STDIN>)
+{
+  print $xp = $xp + $_,"\n";
+}
+
+`echo $xp > $who/.xp`;

@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0];
+$class = `pick $who/.i - class`;
+chomp($class);
+$xp = `cat $who/.xp`;
+chomp($xp);
+
+if (-e "$who/.lvl01" )
+{
+$lvls = `ls $who/.lvl* | sort`;
+$lvls =~ /(\d+)$/;
+$newlvl = $1+1;
+}else{
+$newlvl = 1;
+}
+$askfor = sprintf("lvl%02d",$newlvl);
+print $askfor;
+$xpneeded = `pick $WORLD/tables/xplevel $class $askfor`;
+chomp($xpneeded);
+print STDERR "Needs $xpneeded. Current: $xp.\n";
+
+if ($xp >= $xpneeded)
+{
+print STDERR "LVL UP $who!\n";
+
+
+
+}
