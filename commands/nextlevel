@@ -23,8 +23,8 @@ print STDERR "Needs $xpneeded. Current: $xp.\n";
 
 if ($xp >= $xpneeded)
 {
-print STDERR "LVL UP $who!\n";
-
-
-
+  print STDERR "LVL UP $who!\n";
+  $hd = `pick $WORLD/tables/xplevel $class $askfor`;
+  $sumhp = `echo $hd | cast`;
+  
 }

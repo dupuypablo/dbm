@@ -1,0 +1,27 @@
+#!/usr/bin/perl
+$|++;
+#Esta es la funcion que se comunica con los jugadores para escribir el archivo attack
+#esta funcion tiene que ser distinta para cada jugador, raza, clase
+#por ejemplo, un arquero y algunos guerreros pueden atacar 2 veces por turno
+#el mago ataca distinto. El danio puede estar incluido aca tambien, depende del
+#arma que se use
+#
+#Debo controlar que el $name sea o el nombre o el directorio.
+
+$WORLD = $ENV{'WORLD'};
+$name = $ARGV[0];
+
+print "Objetivo de tu ataque:\n";
+$t = <stdin>;
+chomp($t);
+$i = `cast 'Atacas a $t. Ahora tu iniciativa' 1d10`;
+print "Tu iniciativa es $i.\n";
+$hd = `cast 'Finalmente tu hit dice' 1d20`;
+print "Hit dice: $hd\n";
+
+open F, ">$WORLD/characters/p$name/.attack";
+
+print F "init\t$i\n";
+print F "roll\t$i\n";
+#print F "hd\t$hd\n";
+close F;

@@ -1,0 +1,25 @@
+#!/usr/bin/perl
+my $i=0;
+while (<>)
+{ 
+chomp;
+$mylineas[$i] = [split('\t' ,$_)];
+#print @{$mylineas[$i]};
+
+$i++;
+}
+#print @{$mylineas[0]};
+
+#print $#mylineas;
+
+for (my $i = 0; $i <= $#mylineas; $i++) {
+  @mylin = @{$mylineas[$i]};
+#  print "\n $i .. ", $#mylin, "\n";
+  for (my $j = 0; $j <= $#mylin; $j++) {
+    $AoA[$j][$i]=$mylin[$j];
+#    print $mylin[$j], "\n";
+}}
+
+for (my $j = 0; $j <= $#AoA; $j++){
+  print join("\t",@{$AoA[$j]}),"\n";
+}

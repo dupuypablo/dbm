@@ -48,6 +48,9 @@ def readFile(fileHandle):
 
      return dictName
      
+     
+   
+         
 class UserClass:
     def __init__(self,username):
       self.user = username
@@ -63,6 +66,15 @@ class SampleBot(GtalkRobot):
             print 'leido...'
             print line
 
+    def comm(self,user,message,args):
+      while True:
+	print 'leyendo el fifo...'
+	user.fifo = open('{}/characters/p{}/.fifo'.format(os.environ['WORLD'],self.names[user.getNode()]),'r')
+	print 'file fifo abierto...'
+        for line in iter(user.fifo.readline, ""): 
+            print 'leido...'
+            self.replyMessage(user, line)
+            print line
 
     #Regular Expression Pattern Tips:
     # I or IGNORECASE <=> (?i)      case insensitive matching
@@ -133,6 +145,9 @@ class SampleBot(GtalkRobot):
 	
 	self.replyMessage(user, "Hola {}".format(self.names[user.getNode()]))
 
+        if not hasattr(self.u[user.getNode()], 'fifo'):
+          thread.start_new_thread( self.comm, (user,message, args ) )
+
 	
     def command_006_status(self, user, message, args):
         #status
@@ -186,4 +201,4 @@ if __name__ == "__main__":
     f = open('{}/characters/players'.format(os.environ['WORLD']), 'r')
     bot.names = readFile(f)
     bot.start("dungeon.bot.master@gmail.com", "pablodupuy2")
-
+    print "hola\n"

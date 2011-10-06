@@ -10,6 +10,10 @@ tohit	attackand and target, calculates the tohit value
 wh	where is the character?
 statusplayer	print the status of a player
 addr	get the email address of a character
+create
+newcont	newcont Mochila pMurray 
+rm
+remove
 log
 tictac
 printtime
@@ -19,6 +23,8 @@ sendmail	sendmail mail titulo < textfile
 printlog	in STDOUT and public_html -> 84.202.68.46:8080/~bot/hist.html
 hp	returns and manipulate hit points for players
 sumxp
+nextlevel	nextlevel pMurray
+attack		INCOMPLETA
 
 resolve	ordena por iniciativa, calcula to hit, lee hit points.
 
