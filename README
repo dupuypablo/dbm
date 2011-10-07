@@ -21,7 +21,7 @@ calchours
 bcast	bcast eventfile
 sendmail	sendmail mail titulo < textfile
 printlog	in STDOUT and public_html -> 84.202.68.46:8080/~bot/hist.html
-hp	returns and manipulate hit points for players
+hp	returns and manipulate hit points for ploayers
 sumxp
 nextlevel	nextlevel pMurray
 attack		INCOMPLETA
@@ -30,6 +30,11 @@ resolve	ordena por iniciativa, calcula to hit, lee hit points.
 
 TODO: que el attack de google talk, o linux, lean el arma default, o ataque preseleccionado del animal.
 TODO: seleccionar arma o modo de ataque.
+
+.using is a link to arma o similar. arma o conjuro, tienen una accion default.
+actuar command que inspecciona .using. si es un arma ataca, si es un conjuro lo usa, etc.
+prep command, dependiendo .using, pide dice to hit
+danio puede ser calculado oor actuar
 
 Dir structure
 .i	basic information
