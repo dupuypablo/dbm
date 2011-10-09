@@ -7,4 +7,5 @@ con	8
 int	14
 wis	9
 cha	9
+Alignment	CB
 class	Fighter

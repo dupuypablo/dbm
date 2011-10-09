@@ -10,7 +10,7 @@ import os
 import sys
 
 gmail_user = "dungeon.bot.master@gmail.com"
-gmail_pwd = "pablodupuy"
+gmail_pwd = "pablodupuy2"
 
 def mail(to, subject, text):#, attach):
    msg = MIMEMultipart('related')

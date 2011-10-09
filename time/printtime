@@ -19,5 +19,5 @@ $ns =  $ns % 4;
 
 $mt = $moon[($d%30)/7];
 
-print "$h h, $d d [$mt], $numtoseason[$ns] $y\n";
+print " $h h, $d d [$mt], $numtoseason[$ns] $y\n";
 

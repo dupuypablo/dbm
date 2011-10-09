@@ -1,0 +1,9 @@
+Title	Mercenary
+Frequency	11
+Treasure	M
+Alignment	LG
+AC	5
+HP	3
+THAC0	20
+Morale	12
+XP	15

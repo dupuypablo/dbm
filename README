@@ -60,7 +60,10 @@ multiply humansTitleSailor
 multiply `creature humans Sailor` | perl -ne '`todir $_`'
 creature lycanthrope werewolf | perl -ne '`todir $_`'
 creature lycanthrope werewolf | rn encapuchado | perl -ne '`todir $_`'
-creature lycanthrope werewolf | rn SujetoPalido | perl -ne '`todir $_`'
+creature lycanthrope werewolf | rn SujetoPalido | mycat | perl -ne '`todir $_`'
+ creature humans Thief | rn MujerPecosa | mycat | alltodir
+ 
+ newcont Mochila pMurray
  
 Crear mucha Ropa estandard, parado dentro del jugador
 multicreate div Botas Cinturon Pantalones Tunica

@@ -7,4 +7,5 @@ con	9
 int	15
 wis	8
 cha	13
+Alignment	NB
 class	Mage
