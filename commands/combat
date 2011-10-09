@@ -14,24 +14,49 @@ foreach (split('\n',`ls $path`))
         }
 }
 
-foreach $i (keys (%init) )
+foreach $i (sort {$a <=> $b} keys (%init) )
 {
         print "Round $i\n";
-        foreach $s (@{$init{$i}})
+        foreach $s ( @{$init{$i}})
         {
 	 #print $per{$s};
+	 #$per{$s} =~ /target\t(\w+)/;
 	 $per{$s} =~ /target\t(\w+)/;
-
-	 if ((-e "$s/.i") && (-e "$1/.i") )
+	 $tg = `target $1`;
+	 
+	 #$1 ataca a $tg
+	 
+	 $life = `hp $tg 0>&-`;
+	 $th=`tohit $tg $s`;
+	 $roll = `pick $s/.attack - roll`;
+	 $sizeoftg = `pick $s/.i - Size`;
+	 chomp($roll);
+	 chomp($sizeoftg);
+	 $sizeoftg = 'M' if ($sizeoftg eq '');
+	 
+	 unless ($th eq '')
 	 { 
-	   $life = `hp $1 0>&-`;
 	   chomp($life);
-	   print "($i) $s attacking $1 ($life hp): " , $th=`tohit $s/.i $1/.i` , " \n";
+	   print "($i) $s attacking $tg ($sizeoftg, $life hp). Rolled $roll, $th \n";
+	   if ($roll > $th)
+	   {
+	        $damage = `pick $s/.using - $sizeoftg | cast`;
+		chomp($damage);
+	   	print "HIT with $damage de danio!\n";
+		$hp = `echo '-$damage' | hp $tg`;
+		if ($hp <= 0)
+		{
+		  print "Murio!\n";
+		  `pick $tg/.i - XP | sumxp $s;`;
+		}
+	   }
 	   
 	 }else{
-	   print "($i) $s attacking $1. \n";
+	   print "($i) $s attacking $tg. \n";
 
-	 }	 
+	 }
+	 `rm $s/.attack`;
+	 
         }
         print "txt:";
         $descr{$i} = <>;

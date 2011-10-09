@@ -3,18 +3,41 @@ $WORLD = $ENV{'WORLD'};
 $path = './';
 $path = $ARGV[0] if ($#ARGV == 0);
 $path = "$path/" if !($path =~ /\/$/);
-$format = "%20s%10s%10s%10s\n";	
-#printf("\033[31m$format\033[0m", "Atacante","Ataque","Weapon","LoAtacan");	
+$format = "%20s(%5s%5s)%10s%10s %s\n";	
+printf("\033[31m$format\033[0m",  "Atacante","HP","Vict","Ataque","Weapon","Target");	
 
-printf("^[[1m$format^[[0m", "Atacante","Ataque","Weapon","LoAtacan");	
+#printf("^[[1m$format^[[0m", "Atacante","Ataque","Weapon","LoAtacan");	
 
 foreach (split('\n',`ls $path`))
 {
+	$tg='';
         $isat = (-e "$_/.attack");
 	$isus = (-e "$_/.using");
 
-
+        $tg1 = `pick $_/.attack - target` if $isat;
+	chomp($tg1);chomp($tg1);
+        $tg = `target $tg1` if $isat;
+	chomp($tg);chomp($tg);
+	$meatacan{$tg} += 1 if not $tg eq '';
 #target finnes?
-	printf($format,$_,$isat,$isus);	
+#	printf($format,$_,$isat,$isus,$num,$tg);	
+
+}
+foreach (split('\n',`ls $path`))
+{
+	$tg='';
+        $isat = (-e "$_/.attack");
+	$isus = (-e "$_/.using");
+
+        $tg1 = `pick $_/.attack - target` if $isat;
+        $tg = `target $tg1` if $isat;
+	$life = '';
+	$life = `hp $_ 0>&- 2>&-` ;#if (-e "$_/.attack");
+	chomp($life); chomp($life);
+	chomp($tg);chomp($tg);
+#target finnes?        
+	$tg = "\033[31m${tg}\033[0m"  if not (-e $tg);
+
+	printf($format,$_,"${life}hp",$meatacan{$_},$isat,$isus,$tg);	
 
 }

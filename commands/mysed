@@ -3,6 +3,7 @@
 
 while(<>)
 {
+#print $_;
 	s/Alignment\tAny/Alignment\tLG,LN,LE,NG,NN,NE,CG,CN,CE/;
 	chomp;
 	@f = split('\t');
@@ -13,14 +14,11 @@ while(<>)
 		  @opts = split(',');
 		  $_ = $opts[int(rand($#opts+1))];
 		}
-		$tocast = $_;
-		while ($tocast =~ /(\d+d[\+\-\*\/x\d]+)/)
+		unless ($f[0] =~ /Attacks/)
 		{
-		$torep = `echo $1 | cast` ; chomp($torep);
-		$tocast =~ s/$&/$torep/;
+		  while (s/(\d+d[\+\-\*\/x\d]+)/`echo $1 | cast | tr -d '\n'`/eg){}
 		}
-		
-		$out = "$out$tocast\t";
+		$out = "$out$_\t";
 	}
 	chop($out);
 	$out = "$out\n"

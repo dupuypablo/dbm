@@ -1,9 +1,20 @@
 #!/usr/bin/perl
 #instantiates files, things, creatures, etc...
 
-while(<>)
+if ($#ARGV >= 0)
+{@nom = @ARGV;}
+else
+{push(@nom,$_) while(<>);}
+
+
+for(@nom)
 {
 	print $_;
-	`cat $_ | mysed`;
+	chomp; chomp;
+	$f = $_;
+	$content = `cat $f | mysed`;
+	open F, ">$f";
+	print F $content;
+	close F;
 }
 

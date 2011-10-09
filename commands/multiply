@@ -3,10 +3,11 @@
 
 $who = $ARGV[0];
 $N = `pick $who - Number | cast`;
-
+print STDERR $N;
 for $i (1..$N)
 {
- `cat $who | grep -v '^Number' | mysed > $who$i`;
+ print STDERR $i;
+`cat $who | grep -v '^Number' | mysed > $who$i`;
  print "$who$i\n";
 }
 

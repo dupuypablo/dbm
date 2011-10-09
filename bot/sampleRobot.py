@@ -116,7 +116,6 @@ class SampleBot(GtalkRobot):
     def command_003_status(self, user, message, args):
         #status
         '''(atacar)( +(.*))?$(?i)'''
-        self.u[user.getNode()].p = Popen(['./attack'], stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
 	self.u[user.getNode()].user = user.getNode()
         print self.u[user.getNode()].p
         thread.start_new_thread( self.run, (self.u[user.getNode()].p,user,message, args ) )
@@ -152,8 +151,8 @@ class SampleBot(GtalkRobot):
     def command_006_status(self, user, message, args):
         #status
         '''(info)( +(.*))?$(?i)'''
-	f = open('{}/characters/p{}/.i'.format(os.environ['WORLD'],self.names[user.getNode()]), 'r')	
-	self.replyMessage(user, ("".join(f.readlines())).replace("\t",": " ))
+        f = Popen(['info', '{}/characters/p{}'.format(os.environ['WORLD'],self.names[user.getNode()])] , stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
+	self.replyMessage(user, ("".join(f.stdout.readlines())).replace("\t",": " ))
    
 
     def command_099_help(self, user, message, args):

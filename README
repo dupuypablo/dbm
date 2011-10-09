@@ -27,6 +27,7 @@ sumxp
 nextlevel	nextlevel pMurray
 attack		INCOMPLETA
 use	use pMurray espadacorta
+sumxp	sumxp pMurray
 
 resolve	ordena por iniciativa, calcula to hit, lee hit points.
 
@@ -41,6 +42,9 @@ Dir structure
 .i	basic information
 .hp	hitpoints
 .attack	target, initiative and throw
+.lastlvl
+.modca
+
 
 Tricks:
 Sumar plata al jugador pepe:
