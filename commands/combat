@@ -1,0 +1,38 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$path = './';
+$path = $ARGV[0] if ($#ARGV == 0);
+$path = "$path/" if !($path =~ /\/$/);
+
+foreach (split('\n',`ls $path`))
+{
+        
+        $per{$_} = `cat $_/.attack`;
+        if ($per{$_} =~ /init\t(\d+)/)
+        {
+	 push(@{ $init{$1}}, $_);
+        }
+}
+
+foreach $i (keys (%init) )
+{
+        print "Round $i\n";
+        foreach $s (@{$init{$i}})
+        {
+	 #print $per{$s};
+	 $per{$s} =~ /target\t(\w+)/;
+
+	 if ((-e "$s/.i") && (-e "$1/.i") )
+	 { 
+	   $life = `hp $1 0>&-`;
+	   chomp($life);
+	   print "($i) $s attacking $1 ($life hp): " , $th=`tohit $s/.i $1/.i` , " \n";
+	   
+	 }else{
+	   print "($i) $s attacking $1. \n";
+
+	 }	 
+        }
+        print "txt:";
+        $descr{$i} = <>;
+}

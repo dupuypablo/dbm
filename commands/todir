@@ -1,0 +1,61 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+
+$who = $ARGV[0];
+chomp($who);
+$s = `cat $who`;
+`rm $who; mkdir $who`;
+open F, ">$who/.i";
+print F $s;
+close F;
+
+
+## TESORO
+$tr = `pick $who/.i - Treasure`;
+ chomp($tr);
+
+unless ($tr eq '')
+{
+ $tr = `cat $WORLD/tables/treasure | grep -E '^$tr'`;
+ chomp($tr);
+ print STDERR "tesoro: $tr \n";
+ @tre = split("\t",$tr);
+ print STDERR "coins: $tre[1]\n";
+ print STDERR "gems: $tre[2]\n";
+ print STDERR "art: $tre[3]\n";
+ print STDERR "mag: $tre[4]\n";
+
+ 
+ if ($tr gt "I")
+ {
+ #de bolsillo
+ `echo '$tre[1]' | prob | mysed | pcs $who` if not ($tre[1] eq '');
+
+ }else{
+ #de guarida
+ $typechest = 'CofreGrande';
+ `newcont $typechest $who`;
+ `echo '$tre[1]' | prob | mysed | pcs $who` if not ($tre[1] eq '');
+ $cont = "$who$typechest";
+ `mv $who/pcs $who/$cont/`;
+ `echo 'Number\t$tre[2]' | prob | mysed > $who/$cont/gems; multiply $who/$cont/gems` if not $tre[2] eq '';
+ `echo 'Number\t$tre[3]' | prob | mysed > $who/$cont/artobjects; multiply $who/$cont/artobjects` if not $tre[3] eq '';
+ `echo '$tre[4]' | prob > $who/$cont/magitems` if not $tre[4] eq '';
+
+ }
+}	
+
+
+##ATAQIES
+$at = `pick $who/.i - Attacks`;
+chomp($at);
+unless ($at eq '')
+{
+  @mat = split(',',$at);
+  for $myat (@mat)
+  {
+  	`echo "Item\t$1\nS\t$2\nM\t$2\nL\t$2\n" > $who/$1` if ($myat =~ /(.*):(.*)/);
+	`use $who/$1`;
+  }
+}
+

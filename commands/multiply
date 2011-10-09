@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+#multiply archivo
+
+$who = $ARGV[0];
+$N = `pick $who - Number | cast`;
+
+for $i (1..$N)
+{
+ `cat $who | grep -v '^Number' | mysed > $who$i`;
+ print "$who$i\n";
+}
+
+`remove $who`;

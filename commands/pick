@@ -15,6 +15,6 @@ while (<F>)
 {
 chomp;
 @titles = split("\t",$_);
-print "$titles[$i]\n" if ($titles[0] =~ /^$row$/);
+print "$titles[$i]\n" if ($titles[0] =~ /^$row$/i);
 }
 

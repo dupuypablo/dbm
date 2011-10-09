@@ -9,19 +9,36 @@ $|++;
 #Debo controlar que el $name sea o el nombre o el directorio.
 
 $WORLD = $ENV{'WORLD'};
-$name = $ARGV[0];
+$who = $ARGV[0]; #name of the guy
+chop($who) if (substr($who,-1,1) eq '/');
+unless (-e "$who"){$who =~  s/([A-Z]\w*)$/p$1/ if not ($who =~ /p[A-Z]\w*$/);}
+$who = "$WORLD/characters/$who" if not (-e "$who");
+die("Wrong character $who.") if not (-e "$who");
+$name=$who;
+die("No weapon selected. $who/.using missing.") if not (-l "$who/.using");
+
+print "Usando ", `cat $who/.using | grep Item | cut -f2`;
 
 print "Objetivo de tu ataque:\n";
 $t = <stdin>;
 chomp($t);
+
+
+
 $i = `cast 'Atacas a $t. Ahora tu iniciativa' 1d10`;
+
+
 print "Tu iniciativa es $i.\n";
 $hd = `cast 'Finalmente tu hit dice' 1d20`;
-print "Hit dice: $hd\n";
+print "Hit dice: $hd.\n";
 
-open F, ">$WORLD/characters/p$name/.attack";
 
+#open F, ">$WORLD/characters/p$name/.attack";
+open F, ">$who/.attack";
+print F "target\t$t\n";
 print F "init\t$i\n";
-print F "roll\t$i\n";
+print F "roll\t$hd\n";
 #print F "hd\t$hd\n";
 close F;
+
+`echo "$name atacando:" | cat - $who/.attack | write bot`;

@@ -1,0 +1,9 @@
+Title	Sailor
+Frequency	65
+Treasure	M
+Alignment	CG
+AC	8
+HP	4
+THAC0	20
+Morale	9
+XP	15

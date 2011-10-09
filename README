@@ -11,6 +11,7 @@ wh	where is the character?
 statusplayer	print the status of a player
 addr	get the email address of a character
 create
+multicreate
 newcont	newcont Mochila pMurray 
 rm
 remove
@@ -25,11 +26,11 @@ hp	returns and manipulate hit points for ploayers
 sumxp
 nextlevel	nextlevel pMurray
 attack		INCOMPLETA
+use	use pMurray espadacorta
 
 resolve	ordena por iniciativa, calcula to hit, lee hit points.
 
-TODO: que el attack de google talk, o linux, lean el arma default, o ataque preseleccionado del animal.
-TODO: seleccionar arma o modo de ataque.
+TODO: que el attack de google talk, o linux, lean ataque preseleccionado del animal.
 
 .using is a link to arma o similar. arma o conjuro, tienen una accion default.
 actuar command que inspecciona .using. si es un arma ataca, si es un conjuro lo usa, etc.
@@ -40,3 +41,29 @@ Dir structure
 .i	basic information
 .hp	hitpoints
 .attack	target, initiative and throw
+
+Tricks:
+Sumar plata al jugador pepe:
+echo 1d4+1x10gp | cast | pcs pPepe
+
+Crear una espada
+create weapons 'Espada corta'
+
+Crear criaturas
+creature humans Sailor
+multiply humansTitleSailor
+
+multiply `creature humans Sailor` | perl -ne '`todir $_`'
+creature lycanthrope werewolf | perl -ne '`todir $_`'
+creature lycanthrope werewolf | rn encapuchado | perl -ne '`todir $_`'
+creature lycanthrope werewolf | rn SujetoPalido | perl -ne '`todir $_`'
+ 
+Crear mucha Ropa estandard, parado dentro del jugador
+multicreate div Botas Cinturon Pantalones Tunica
+
+
+thac0
+ca
+combat is resolve 
+
+overview interactivo para ver quien ataca a quien. (si archivo attack esta definido y si target es correcto y si using esta definido)

@@ -1,0 +1,12 @@
+Lycanthrope	Werewolf
+Frequency	65
+Treasure	B
+Alignment	CE
+Number	3d18
+AC	5
+HP	3d8+3
+THAC0	15
+Morale	12
+XP	420
+Intelligence	1d3+7
+Attacks	teeth:2d4

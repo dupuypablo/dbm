@@ -1,8 +1,8 @@
 Item	Cost	Weight
-Saco chico	5 cp	0.05
-Saco grande	2 sp	0.22
-Bolsa de cinto chica	7 sp	0.05
-Bolsa de cinto grande	1 gp	0.4
-Cofre Grande	2 gp	11
-Cofre Chico	1 gp	4.5
-Mochila	2 gp	0.9
+SacoChico	5 cp	0.05
+SacoGrande	2 sp	0.22
+BolsaDeCintoChica	7 sp	0.05
+BolsaDeCintoGrande	1 gp	0.4
+CofreGrande	2 gp	11
+CofreChico	1 gp	4.5
+Mochila2gp	0.9

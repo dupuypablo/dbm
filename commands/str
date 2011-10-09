@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+#
+
+$who = $ARGV[0];
+$s = `pick $who/.i - '^str' `;

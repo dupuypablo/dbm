@@ -1,0 +1,7 @@
+#!/usr/bin/perl
+#rename
+$_=(<STDIN>);
+chomp();
+$newname = $ARGV[0];
+print STDERR `mv $_ $newname 3>&2`;
+print $newname;

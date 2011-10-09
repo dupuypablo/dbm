@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+# init
+$who = $ARGV[0];
+$s = `pick $who/.attack - init`;
+print $s;

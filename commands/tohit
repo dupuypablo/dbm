@@ -1,8 +1,17 @@
 #!/usr/bin/perl
+# tohit victima atacante
 
-$thac0=`pick $ARGV[1] - '^THAC0'`;
+#$thac0=`pick $ARGV[1] - '^THAC0'`;
+#chomp($thac0);
+#$ac = `pick $ARGV[0] - '^AC'`;
+#chomp($ac);
+#$tohit = $thac0 - $ac;
+#print STDERR "($thac0 - $ac =) ";
+#print $tohit;
+
+$thac0=`thac0 $ARGV[1]`;
 chomp($thac0);
-$ac = `pick $ARGV[0] - '^AC'`;
+$ac = `ca $ARGV[0]`;
 chomp($ac);
 $tohit = $thac0 - $ac;
 print STDERR "($thac0 - $ac =) ";

@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+#instantiates files, things, creatures, etc...
+
+while(<>)
+{
+	print $_;
+	`cat $_ | mysed`;
+}
+

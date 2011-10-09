@@ -12,8 +12,11 @@ if (-e "$who/.lvl01" )
 $lvls = `ls $who/.lvl* | sort`;
 $lvls =~ /(\d+)$/;
 $newlvl = $1+1;
+$oldhp = `pick $who/.lvl$1 - HP`;
+chomp($oldhp);
 }else{
 $newlvl = 1;
+$oldhp = 0;
 }
 $askfor = sprintf("lvl%02d",$newlvl);
 print $askfor;
@@ -23,8 +26,14 @@ print STDERR "Needs $xpneeded. Current: $xp.\n";
 
 if ($xp >= $xpneeded)
 {
-  print STDERR "LVL UP $who!\n";
-  $hd = `pick $WORLD/tables/xplevel $class $askfor`;
-  $sumhp = `echo $hd | cast`;
-  
+  print STDERR "LVL UP $who! $class $askfor\n";
+  $hd = `pick $WORLD/tables/hitdices $class $askfor | cast`;
+  chomp($hd);
+  print STDERR "+$hd hitpoints";
+  $sumhp = $oldhp+$hd;
+  `cat ~/tables/$class | rotatetable | grep -i -E 'thac0|$askfor' | rotatetable > $who/.$askfor`;
+  `echo 'HP\t$sumhp' >> $who/.$askfor`;
+  `rm $who/.lastlvl`;
+  `ln -s .$askfor $who/.lastlvl`;
+  `echo $hd | hp $who`;
 }

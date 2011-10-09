@@ -1,0 +1,25 @@
+Title	Frequency	Treasure	Alignment	Number	AC	HP	THAC0	Morale	XP
+Caveman	11	0	NN	10d10	8	1d6	19	9	15
+Adventurer	4	0	Any	1d8	Any	Any	Any	Any	Any
+Bandit	65	J,N,Q	CE	20d10	1d5+5	1d6	20	9	15
+Barbarian	11	L,M	Any	30d10	1d5+5	1d6	20	9	15
+Berserker	11	0	NN	10d10	1d5+5	1d6	20	20	15
+Farmer	65	0	NG	1d20	10	1d6	20	9	15
+Gentry	65	J,K,L,M,N,Q	Any	1d20	10	1d6	20	9	15
+Knight	4	L,M	LG,LN,LE	1d4	1d2x2	2d8	19	14	100
+Mercenary	11	L,M	Any	10d10	1d4+3	2d4	20	12	15
+Fisherman	65	1d6x10sp	Any	4d20	1d3+7	1d6	20	9	15
+Trader	65	10d100 gp	Any	3d10x10	1d6+4	1d6	20	9	15
+Middle Class	65	J,M,N	Any	2d20	10	1d6	20	9	15
+Peasant	65	0	Any	1d100	10	1d6	20	9	15
+Pilgrim	20	I	Any	10d10	1d3+7	1d6	20	9	15
+Pirate	65	J,M,N,Q	LE,NE,CE	30d10	1d5+5	1d6	20	9	15
+Police	20	1d6x10 sp	LG,LN,LE	2d10	1d4+3	1d6	20	10	15
+Priest	4	J,K,M	Any	1d8	10	1d6	20	8	15
+Sailor	65	L,M	Any	4d20	1d3+7	1d6	20	9	15
+Slaver	65	0	Any	1d100	10	1d6	20	9	15
+Soldier	20	I	Any	10d10	1d5+3	1d6	20	1d3+9	15
+Thief	65	J,M,N,Q	LE,NE,CE	1d8	1d3+7	2d8	20	10	100
+Tradesman	65	1d100 gp	Any	2d6	10	1d6	20	8	15
+Tribesman	11	0	Any	10d10	8	1d6	20	9	15
+Wizard	4	L,N,Q	Any	1d8	10	2d8	20	10	100

@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+#use pMurray espadacorta
+#use pMurray/espadacorta
+##checking inputs
+$dir = `pwd`;
+chomp($dir);
+if ($#ARGV==1)
+{
+#Correct character?
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0]; #name of the guy
+chop($who) if (substr($who,-1,1) eq '/');
+$who = "$WORLD/characters/$who" if not (-e "$who");
+$who = "$dir/$who" if (-e "$dir/$who");
+die("Wrong character $who.") if not (-e "$who");
+
+#Correct tool
+$what = $ARGV[1]; #name of the thing
+chop($what) if (substr($what,-1,1) eq '/');
+$what = "$who/$what" if not (-e "$what");
+$what = "$dir/$what" if (-e "$dir/$what");
+die("Wrong 'what' $what.") if not (-e "$what");
+}else{
+$what = $ARGV[0]; #name of the guy/thing
+$what = "$dir/$what" if (-e "$dir/$what");
+die("Wrong 'what' $what.") if not (-e "$what");
+$who = $1 if ($what =~ /^(.+)\//);
+die("Wrong character $who.") if not (-e "$who");
+}
+
+`remove $who/.using` if (-l "$who/.using");
+`ln -s $what $who/.using `;

@@ -1,0 +1,13 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0];
+$s = `pick $who/.i - '^AC' `;
+
+chomp($s);
+print STDERR "($s)";
+
+$dex = `getab dex $who`;
+chomp($dex);
+
+$s += `pick $WORLD/tables/dexterity HitProb '^$dex'`;
+print $s;

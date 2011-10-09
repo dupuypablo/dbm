@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$path = './';
+$path = $ARGV[0] if ($#ARGV == 0);
+$path = "$path/" if !($path =~ /\/$/);
+$format = "%20s%10s%10s%10s\n";	
+#printf("\033[31m$format\033[0m", "Atacante","Ataque","Weapon","LoAtacan");	
+
+printf("^[[1m$format^[[0m", "Atacante","Ataque","Weapon","LoAtacan");	
+
+foreach (split('\n',`ls $path`))
+{
+        $isat = (-e "$_/.attack");
+	$isus = (-e "$_/.using");
+
+
+#target finnes?
+	printf($format,$_,$isat,$isus);	
+
+}

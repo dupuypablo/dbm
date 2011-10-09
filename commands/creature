@@ -1,0 +1,32 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+if ($#ARGV==-1)
+{
+print `ls $WORLD/creatures/`;
+die("create listfile.");
+}
+
+$lista = $ARGV[0];
+if ($#ARGV==0)
+{
+print `cat $WORLD/creatures/$lista`;
+die("create listfile object.");
+}
+$elemento = $ARGV[1];
+$s =  `cat $WORLD/creatures/$lista | grep -i -E '\\sTHAC0\\s|^$elemento\\s' | rotatetable`;
+print STDERR $s;
+$s =~ /^(.*?)\n/;
+$t = $1;
+$t =~ s/\s+//g;
+print STDERR $t;
+if ($#ARGV == 2)
+{
+open F, ">$ARGV[2]";
+print $ARGV[2];
+}else{
+open F, ">$lista$t";
+print "$lista$t"
+}
+print F $s;
+close F;
+ 

@@ -1,0 +1,83 @@
+#!/usr/bin/perl
+#LG,LN,LE,NG,NN,NE,CG,CN,CE
+
+$WORLD = $ENV{'WORLD'};
+$ss=`cat $WORLD/tables/anyAlignment`;
+chomp($ss);
+@k = split(",",$ss);
+@h{@k} = ('Lawful Good','Lawful Neutral', 'Lawful Evil', 'Neutral Good','Neutral', 'Neutral Evil','Chaotic Good','Chaotic Neutral', 'Chaotic Evil');
+
+
+#print `wget 'http://en.wikipedia.org/wiki/Alignment_\(Dungeons_%26_Dragons\)'`;
+$t{'LG'} = <<END;
+Lawful Good is known as the "Saintly" or "Crusader" alignment. A Lawful Good character typically acts with compassion, and always with honor and a sense of duty. A Lawful Good nation would consist of a well-organized government that works for the benefit of its citizens. Lawful Good characters include righteous knights, paladins, and most dwarves. Lawful Good creatures include the noble golden dragons. Lawful Good outsiders are known as Archons.
+
+Lawful Good characters, especially paladins, may sometimes find themselves faced with the dilemma of whether to obey law or good when the two conflict?for example, upholding a sworn oath when it would lead innocents to come to harm?or conflicts between two orders, such as between their religious law and the law of the local ruler.
+
+In the Complete Scoundrel sourcebook Batman, Dick Tracy and Indiana Jones are cited as examples of lawful good characters
+END
+
+$t{'NG'} = <<END;
+Neutral Good is known as the "Benefactor" alignment. A Neutral Good character is guided by his conscience and typically acts altruistically, without regard for or against Lawful precepts such as rules or tradition. A Neutral Good character has no problems with co-operating with lawful officials, but does not feel beholden to them. In the event that doing the right thing requires the bending or breaking of rules, they do not suffer the same inner conflict that a Lawful Good character would.
+
+Examples of Neutral Good characters include Zorro and Spider-Man.[7] The Neutral Good outsiders are known as Guardinals.
+END
+
+$t{'CG'} = <<END;
+
+Chaotic Good is known as the "Beatific," "Rebel," or "Cynic" alignment. A Chaotic Good character favors change for a greater good, disdains bureaucratic organizations that get in the way of social improvement, and places a high value on personal freedom, not only for oneself, but for others as well. They always intend to do the right thing, but their methods are generally disorganized and often out of alignment with the rest of society. They may create conflict in a team if they feel they are being pushed around, and often view extensive organization and planning as pointless, preferring to improvise.
+
+Robin Hood, Starbuck from Battlestar Galactica, and Malcolm Reynolds from Firefly are examples of Chaotic Good individuals.[7] Eladrin are the outsider race representing Chaotic Good.
+END
+
+$t{'LN'} = <<END;
+Lawful Neutral is called the "Judge" or "Disciplined" alignment. A Lawful Neutral character typically believes strongly in Lawful concepts such as honor, order, rules and tradition, and often follows a personal code. A Lawful Neutral society would typically enforce strict laws to maintain social order, and place a high value on traditions and historical precedent. Examples of Lawful Neutral characters might include a soldier who always follows orders, a judge or enforcer that adheres mercilessly to the word of the law, and a disciplined monk.
+
+Characters of this alignment are neutral with regard to good and evil. This does not mean that Lawful Neutral characters are amoral or immoral, or do not have a moral compass, but simply that their moral considerations come a distant second to what their code, tradition, or law dictates. They typically have a strong ethical code, but it is primarily guided by their system of belief, not by a commitment to good or evil.
+
+James Bond, Odysseus, and Sanjuro from Yojimbo are considered by Complete Scoundrel as Lawful Neutral.[7] Three exemplars of Lawful Neutral outsiders exist. These are the Formians, the Inevitables and the Modrons.
+END
+
+$t{'NN'} = <<END;
+Neutral alignment, also referred to as True Neutral or Neutral Neutral, is called the "Undecided" or "Nature's" alignment. This alignment represents Neutral on both axes, and tends not to feel strongly towards any alignment. A farmer whose primary overriding concern is to feed his family is of this alignment. Most animals, lacking the capacity for moral judgment, are of this alignment. Many roguish characters who play all sides to suit themselves are also of this alignment.
+
+Some Neutral characters, rather than feeling undecided, are committed to a balance between the alignments. They may see good, evil, law and chaos as simply prejudices and dangerous extremes. Mordenkainen is one such character who takes this concept to the extreme, dedicating himself to a detached philosophy of neutrality to ensure that no one alignment or power takes control of the Flanaess.
+
+Druids frequently follow this True Neutral dedication to balance, and under Advanced Dungeons & Dragons rules were required to be this alignment. In an example given in the 2nd Edition Player's Handbook, a typical druid might fight against a band of marauding gnolls, only to switch sides to save the gnolls' clan from being totally exterminated.[8]
+
+Lara Croft, Lucy Westenra from Dracula and Han Solo in his early Star Wars appearance are neutral.[7] The true neutral outsiders are known as the Rilmani.
+END
+
+$t{'CN'} = <<END;
+Chaotic Neutral is called the "Anarchist" or "Free Spirit" alignment. A character of this alignment is an individualist who follows his or her own heart, and generally shirks rules and traditions. Although they promote the ideals of freedom, it is their own freedom that comes first. Good and Evil come second to their need to be free, and the only reliable thing about them is how totally unreliable they are. Chaotic Neutral characters are free-spirited and do not enjoy the unnecessary suffering of others, but if they join a team, it is because that team's goals happen to coincide with their own at the moment. They invariably resent taking orders and can be very selfish in their pursuit of personal goals. A Chaotic Neutral character does not have to be an aimless wanderer; they may have a specific goal in mind, but their methods of achieving that goal are often disorganized, unorthodox, or entirely unpredictable.
+
+An unusual subset of Chaotic Neutral is "strongly Chaotic Neutral", describing a character who behaves chaotically to the point of appearing insane. Characters of this type may regularly change their appearance and attitudes for the sake of change, and intentionally disrupt organizations for the sole reason of disrupting a lawful construct. Characters of this type include the Xaositects from the Planescape setting, and Hennet from the third edition Player's Handbook. In Advanced Dungeons & Dragons, Chaotic Neutral was frequently assumed to refer to this subset.
+
+Captain Jack Sparrow, Al Swearengen from the TV series Deadwood, and Snake Plissken from Escape from New York are Chaotic Neutral characters according to Complete Scoundrel.[7] Slaadi represent pure chaos outsiders.
+END
+
+$t{'LE'} = <<END;
+Lawful Evil is referred to as the "Dominator" or "Diabolic" alignment. Characters of this alignment see a well-ordered system as being easier to exploit, and show a combination of desirable and undesirable traits; while they usually obey their superiors and keep their word, they care nothing for the rights and freedoms of other individuals and are not averse to twisting the rules to work in their favor. Examples of this alignment include tyrants, devils, undiscriminating mercenary types who have a strict code of conduct, and loyal soldiers who enjoy the act of killing.
+
+Like Lawful Good Paladins, Lawful Evil characters may sometimes find themselves faced with the dilemma of whether to obey law or evil when the two conflict. However, their issues with Law versus Evil are more concerned with "Will I get caught?" versus "How does this benefit me?"
+
+Boba Fett of Star Wars, and X-Men's Magneto are cited examples of Lawful Evil characters.[7] The Lawful Evil outsiders are known as Baatezu (Devils).
+END
+
+$t{'NE'} = <<END;
+Neutral Evil is called the "Malefactor" alignment. Characters of this alignment are typically selfish and have no qualms about turning on their allies-of-the-moment. They have no compunctions about harming others to get what they want, but neither will they go out of their way to cause carnage or mayhem when they see no direct benefit to it. They abide by laws for only as long as it is convenient for them. A villain of this alignment can be more dangerous than either Lawful or Chaotic Evil characters, since he is neither bound by any sort of honor or tradition nor disorganized and pointlessly violent.
+
+Examples are an assassin who has little regard for formal laws but does not needlessly kill, a henchman who plots behind his superior's back, or a mercenary who switches sides if made a better offer.
+
+Complete Scoundrel cites X-Men's Mystique, and Sawyer of the early seasons of Lost as Neutral Evil characters.[7] Yugoloths (Daemons) are the outsiders of Neutral Evil.
+END
+
+$t{'CE'} = <<END;
+Chaotic Evil is referred to as the "Destroyer" or "Demonic" alignment. Characters of this alignment tend to have no respect for rules, other people's lives, or anything but their own desires, which are typically selfish and cruel. They set a high value on personal freedom, but do not have any regard for the lives or freedom of other people. They do not work well in groups, as they resent being given orders, and usually behave themselves only out of fear of punishment.
+
+It is not compulsory for a Chaotic Evil character to be constantly performing sadistic acts just for the sake of being evil, or constantly disobeying orders just for the sake of causing chaos. They do however enjoy the suffering of others, and view honor and self-discipline as weaknesses. Serial killers and monsters of limited intelligence are typically Chaotic Evil.
+
+According to the Complete Scoundrel sourcebook, Carl Denham from King Kong and Riddick from Pitch Black are Chaotic Evil.[7] The chaotic evil outsiders are the Tanar'ri (Demons).
+END
+
+print $h{$ARGV[0]},"\n",$t{$ARGV[0]};

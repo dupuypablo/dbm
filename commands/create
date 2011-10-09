@@ -1,13 +1,24 @@
 #!/usr/bin/perl
 #create weapons 'Espada corta'
 $WORLD = $ENV{'WORLD'};
-$elemento = $ARGV[1];
+if ($#ARGV==-1)
+{
+print `ls $WORLD/tables/`;
+die("create listfile.");
+}
+
 $lista = $ARGV[0];
-$s =  `cat $WORLD/tables/$lista | grep -E '^Item\\s|^$elemento\\s' | rotatetable`;
+if ($#ARGV==0)
+{
+print `cat $WORLD/tables/$lista`;
+die("create listfile object.");
+}
+$elemento = $ARGV[1];
+$s =  `cat $WORLD/tables/$lista | grep -i -E '^Item\\s|^$elemento\\s' | rotatetable`;
 print STDERR $s;
 $s =~ /^(.*?)\n/;
 $t = $1;
-$t =~ s/\s//;
+$t =~ s/\s+//g;
 print $t;
 if ($#ARGV == 2)
 {

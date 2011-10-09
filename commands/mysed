@@ -1,0 +1,29 @@
+#!/usr/bin/perl
+#instantiates files, things, creatures, etc...
+
+while(<>)
+{
+	s/Alignment\tAny/Alignment\tLG,LN,LE,NG,NN,NE,CG,CN,CE/;
+	chomp;
+	@f = split('\t');
+	for (@f)
+	{
+		if (/,/)
+		{
+		  @opts = split(',');
+		  $_ = $opts[int(rand($#opts+1))];
+		}
+		$tocast = $_;
+		while ($tocast =~ /(\d+d[\+\-\*\/x\d]+)/)
+		{
+		$torep = `echo $1 | cast` ; chomp($torep);
+		$tocast =~ s/$&/$torep/;
+		}
+		
+		$out = "$out$tocast\t";
+	}
+	chop($out);
+	$out = "$out\n"
+}
+chop($out);
+print $out;

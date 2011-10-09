@@ -1,0 +1,30 @@
+#!/usr/bin/perl
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0]; #name of the guy
+chop($who) if (substr($who,-1,1) eq '/');
+$who = "$WORLD/characters/$who" if not (-e "$who");
+die("Wrong character $who.") if not (-e "$who");
+
+
+if (-e "$who/pcs")
+{
+  $hp=`cat $who/pcs`;
+}else{
+  $hp=0;
+}
+
+$hp = 0 if ($hp eq '');
+
+@coins = split('p',$hp);
+for (@coins) {$pc{$2}+=$1 if (/(\d+)\s*(\w)/) ;}
+print $pc{$_},$_,"p" foreach (keys %pc);
+
+while (<STDIN>)
+{
+@coins = split('p');
+for (@coins) {$pc{$2}+=$1 if (/(-?\d+)\s*(\w)/) ;}
+
+  print $pc{$_},$_,"p" foreach (keys %pc);
+}
+open F, ">$who/pcs";
+print F $pc{$_},$_,"p" foreach (keys %pc);

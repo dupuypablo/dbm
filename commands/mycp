@@ -1,0 +1,24 @@
+#!/usr/bin/perl
+#instantiates files, things, creatures, etc...
+
+while(<>)
+{
+	s/Alignment\tAny/Alignment\tLG,LN,LE,NG,NN,NE,CG,CN,CE/;
+	chomp;
+	@f = split('\t');
+	for (@f)
+	{
+		if (/,/)
+		{
+		  @opts = split(',');
+		  $_ = $opts[int(rand($#opts+1))];
+		}
+		$_ = `echo $_ | cast ` if /\dd\d/;
+		chomp;
+		$out = "$out$_\t";
+	}
+	chop($out);
+	$out = "$out\n"
+}
+chop($out);
+print $out;

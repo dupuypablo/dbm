@@ -2,9 +2,13 @@
 $WORLD = $ENV{'WORLD'};
 $who = $ARGV[0] if ($#ARGV == 0); #name of the guy
 chop($who) if (substr($who,-1,1) eq '/');
+$who = "$WORLD/characters/$who" if not (-e "$who");
+print "$who\n";
+exit if not (-e "$who");
+
 if (-e "$who/.i")
 {
-  $mhp=`cat $who/.i | grep  HP | cut -f2`;
+  $mhp=`cat $who/.i $who/.lastlvl | grep  HP | cut -f2`;
 }else{
   $mhp = 0;
 }
