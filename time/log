@@ -1,11 +1,21 @@
 #!/usr/bin/perl
+#log
+#log Murray Pepe
 $WORLD = $ENV{'WORLD'};
 $chrs = `cat $WORLD/characters/players | cut -f2`;
 chomp($chrs);
 @chrslist = split('\n',$chrs);
+@chrslist = @ARGV if $#ARGV >=0 ;
+for (@chrslist)
+{
+  $hp = `hp p$_ 0>&-`;
+  chomp($hp); 
+  $_ = $_ . "($hp)" ;
+}
 $re = join(',',@chrslist);
 #print $re;
-$re = "$ARGV[0]" if ($#ARGV == 0);
+#$re = "$ARGV[0]" if ($#ARGV == 0);
 $hs = `echo '' | tictac 3>&1 1>&- 2>&3 3>&- `;
 #print "$WORLD/log/$hs";
-`cat - | sed 's/^/$re\t/' >> $WORLD/log/$hs `;
+`cat - | sed "s/^/$re\t/" >> $WORLD/log/$hs `;
+`printlog`;

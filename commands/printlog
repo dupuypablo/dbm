@@ -2,21 +2,28 @@
 $charname = 'murray';
 $WORLD = $ENV{'WORLD'};
 $file =  `cat $WORLD/public_html/historia.html`;
-@logs = split('\n',`ls $WORLD/log/`);
+@logs = split('\s',`ls $WORLD/log/`);
 $rows=$#logs+1;
-$file =~ s/insertCharacterName/$charname/;
-$file =~ s/insertNumberOfRaws/$rows/;
 
   $datarow='';
   my $i=-1;
 foreach $time (@logs)
 {
-$i++;
+#$i++;
+$s=0;
+  #$oldtime=$time;
 print `printtime $time \n`;
-print $alllines=`cat $WORLD/log/$time`;
+$alllines=`cat $WORLD/log/$time`;
 @lines=split('\n',$alllines);
 foreach $l (@lines)
 {
+$ap = "'";
+$l =~ s/\'//g;
+$l =~ s/\`//g;
+$l =~ s/\"//g;
+
+  print "$l\n";
+  
   @col = split('\t',$l);
   $who = $col[0];
   $txt = $col[1];
@@ -28,12 +35,27 @@ foreach $l (@lines)
   $d = int($hs/24);
   $y = int($d/364);
   $d = $d % 364;
-  
-  $val = $i;
-  $datarow =$datarow . "data.setValue($i, 0, new Date($y, 0, $d, $h, $min, 0));data.setValue($i, 1, $val);data.setValue($i, 2, '$tit');data.setValue($i, 3, '$txt');\n";
+  #$val = $i;
+  for (split(',',$who))
+  {
+  /(\w+)\((\d+)\)/;
+  #print $who, $1, $2;
+  $val = $2;
+  $i=0+$nrows{$1};
+  $datarow{$1} =$datarow{$1} . "data.setValue($i, 0, new Date($y, 0, $d, $h, $min, $s));data.setValue($i, 1, $val);data.setValue($i, 2, '$1:$tit');data.setValue($i, 3, '$txt');\n";
+  $nrows{$1} = $nrows{$1}+1;
+  }
+  $s++;
   }
 }
 
-$file =~ s/insertdata/$datarow/;
-open FILE, ">", "$WORLD/public_html/hist.html" or die $!;
-print FILE $file;
+for (keys %datarow)
+{
+$myfile = $file;
+$myfile =~ s/insertdata/$datarow{$_}/;
+$myfile =~ s/insertCharacterName/$_/;
+$myfile =~ s/insertNumberOfRaws/$nrows{$_}/;
+open FILE, ">", "$WORLD/public_html/hist$_.html" or die $!;
+print FILE $myfile;
+close FILE;
+}

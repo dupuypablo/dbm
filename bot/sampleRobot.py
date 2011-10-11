@@ -154,11 +154,28 @@ class SampleBot(GtalkRobot):
         f = Popen(['info', '{}/characters/p{}'.format(os.environ['WORLD'],self.names[user.getNode()])] , stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
 	self.replyMessage(user, ("".join(f.stdout.readlines())).replace("\t",": " ))
    
+    def command_007_status(self, user, message, args):
+        #status
+        '''(log)( +(.*))?$(?i)'''
+        f = Popen(['log', self.names[user.getNode()]], stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
+	f.stdin.write(message)
+	f.stdin.write('\n')
+	f.stdin.close()
+	self.replyMessage(user, ("".join(f.stdout.readlines())).replace("\t",": " ))   
+
+    def command_008_status(self, user, message, args):
+        #status
+        '''(partylog)( +(.*))?$(?i)'''
+        f = Popen(['log'], stderr=STDOUT, stdout=PIPE, stdin=PIPE, bufsize=0, universal_newlines=True)
+	f.stdin.write(message)
+	f.stdin.write('\n')
+	f.stdin.close()
+	self.replyMessage(user, ("".join(f.stdout.readlines())).replace("\t",": " ))   
 
     def command_099_help(self, user, message, args):
         #status
         '''(help)( +(.*))?$(?i)'''
-	self.replyMessage(user, "hola|nuevo personaje|atacar|info")
+	self.replyMessage(user, "hola|nuevo personaje|atacar|info|log|partylog")
   
    #This method is used to response users.
     def command_100_default(self, user, message, args):
