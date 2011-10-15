@@ -1,0 +1,58 @@
+#!/usr/bin/perl
+
+print "\t\t\t(12)";
+$map[12] = (<>);
+chomp($map[12]);
+print "\t\t\t(12)$map[12]\n";
+
+print "\t\t(11)";
+$map[11] = (<>);
+chomp($map[11]);
+print "\t\t(11)$map[11]\t(1)";
+$map[1] = (<>);
+chomp($map[1]);
+print "\t\t(11)$map[11]\t(1)$map[1]\n";
+
+print "\t(10)";
+$map[10] = (<>);
+chomp($map[10]);
+print "\t(10)$map[10]\t\t\t(2)";
+$map[2] = (<>);
+chomp($map[2]);
+print "\t(10)$map[10]\t\t\t(2)$map[2]\n";
+
+print "(9)";
+$map[9] = (<>);
+chomp($map[9]);
+print "(9)$map[9]\t\t(0)";
+$map[0] = (<>);
+chomp($map[0]);
+print "(9)$map[9]\t\t(0)$map[0]\t\t(3)";
+$map[3] = (<>);
+chomp($map[3]);
+print "(9)$map[9]\t\t(0)$map[0]\t\t(3)$map[3]\n";
+
+print "\t(8)";
+$map[8] = (<>);
+chomp($map[8]);
+print "\t(8)$map[8]\t\t\t(4)";
+$map[4] = (<>);
+chomp($map[4]);
+print "\t(8)$map[8]\t\t\t(4)$map[4]\n";
+
+print "\t\t(7)";
+$map[7] = (<>);
+chomp($map[7]);
+print "\t\t(7)$map[7]\t(5)";
+$map[5] = (<>);
+chomp($map[5]);
+print "\t\t(7)$map[7]\t(5)$map[5]\n";
+
+print "\t\t\t(6)";
+$map[6] = (<>);
+chomp($map[6]);
+print "\t\t\t(6)$map[6]\n";
+
+open F, ">.map";
+print F join("\t",@map);
+close F;

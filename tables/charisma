@@ -1,4 +1,4 @@
-Score	MaximumNumberOfHenchmen LoyaltyBase	ReactionAdjustment
+Score	MaximumNumberOfHenchmen	LoyaltyBase	ReactionAdjustment
 1	0	-8	-7
 2	1	-7	-6
 3	1	-6	-5

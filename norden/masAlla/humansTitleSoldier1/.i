@@ -1,0 +1,9 @@
+Title	Soldier
+Frequency	20
+Treasure	I
+Alignment	LN
+AC	7
+HP	6
+THAC0	20
+Morale	10
+XP	15

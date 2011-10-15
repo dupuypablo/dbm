@@ -1,0 +1,6 @@
+Wolf	Size	Frequency	Treasure	Alignment	Number	AC	HP	THAC0	Morale	XP	Intelligence	Attacks
+Black	S	65	0	NN	1d3	7	3d8+3	17	9	175	2d2	paw:1d3,teeth:1d6
+Wolf	M	20	0	NN	2d12	7	3d8	18	10	120	6	teeth:1d4+1
+Worg	L	11	0	NE	3d4	6	3d8+3	17	11	120	6	teeth:2d4
+Dire	L	11	0	NN	3d4	6	4d8+4	15	10	175	3	teeth:2d4
+Winter	L	4	0	NE	2d4	5	6d8	15	13	975	9	teeth:2d4

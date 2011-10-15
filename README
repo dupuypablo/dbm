@@ -25,6 +25,7 @@ printlog	in STDOUT and public_html -> 84.202.68.46:8080/~bot/hist.html
 hp	returns and manipulate hit points for ploayers
 sumxp
 nextlevel	nextlevel pMurray
+nextab		nextab pMurray
 attack		INCOMPLETA
 use	use pMurray espadacorta
 sumxp	sumxp pMurray

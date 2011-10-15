@@ -1,0 +1,16 @@
+#!/usr/bin/perl
+
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0];
+@listaabs = ('strength', 'dexterity', 'constitution','intelligence','wisdom','charisma');
+
+for $lista (@listaabs)
+{
+$ab = substr($lista, 0,3 );
+$val = `getab $ab $who`;
+chomp($val);
+$s =  $s. $lista . `cat $WORLD/tables/$lista | grep -i -E '^Score\\s|^$val\\s' | rotatetable`;
+}
+open F, ">$who/.ab";
+print F $s;
+close F;

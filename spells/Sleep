@@ -1,0 +1,7 @@
+Name	Sleep
+Range	30
+Duration	5 * lvl
+Area	Special
+Components	V,S,M
+CastingTime	1
+SavingThrow	0

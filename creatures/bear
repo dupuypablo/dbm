@@ -1,0 +1,5 @@
+Bear	Size	Frequency	Treasure	Alignment	Number	AC	HP	THAC0	Morale	XP	Intelligence	Attacks
+Black	M	65	0	NN	1d3	7	3d8+3	17	9	175	2d2	paw:1d3,teeth:1d6
+Brown	L	20	0	NN	1d6	6	5d8+5	15	9	420	2d2	paw:1d6,teeth:1d8
+Cave	L	20	0	NN	1d2	6	6d8+6	13	9	650	2d2	paw:1d8,teeth:1d12
+Polar	L	11	0	NN	1d6	6	8d8+8	11	9	1400	2d2	paw:1d10,teeth:2d12

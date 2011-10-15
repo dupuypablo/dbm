@@ -29,8 +29,9 @@ foreach $i (sort {$a <=> $b} keys (%init) )
 	 $life = `hp $tg 0>&-`;
 	 $th=`tohit $tg $s`;
 	 $roll = `pick $s/.attack - roll`;
-	 $sizeoftg = `pick $s/.i - Size`;
 	 chomp($roll);
+	 $roll = $roll + `pick $s/.ab - HitProb`;
+	 $sizeoftg = `pick $s/.i - Size`;
 	 chomp($sizeoftg);
 	 $sizeoftg = 'M' if ($sizeoftg eq '');
 	 
@@ -41,6 +42,7 @@ foreach $i (sort {$a <=> $b} keys (%init) )
 	   if ($roll > $th)
 	   {
 	        $damage = `pick $s/.using - $sizeoftg | cast`;
+		$damage = $damage + `pick $s/.ab - DamageAdjust`;
 		chomp($damage);
 	   	print "HIT with $damage de danio!\n";
 		$hp = `echo '-$damage' | hp $tg`;

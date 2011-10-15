@@ -1,0 +1,3 @@
+#potionsHealing
+print "Frasco entero, " . `echo 3d8+3 | cast` . "Un tercio " . `echo 1d8 | cast`;
+print "Frasco entero, " . `echo 2d4+2 | cast`;

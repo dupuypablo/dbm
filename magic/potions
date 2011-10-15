@@ -1,0 +1,7 @@
+Animal Control	$_=`echo 1d20|cast`; chomp; if (/^[1-4]$/) {$anim='mammal';} elsif (/^[5-8]$/) {$anim='avian';} elsif (/^9|10|11|12$/) {$anim='reptile/amphibian';} elsif (/^13|14|15$/) {$anim='fish';} else {$anim='cualquiera'} print '$animal='."'$anim'".';$numpeq='.`echo 5d4|cast`.';$nummed='.`echo 3d4|cast`.';$numgran='.`echo 1d4|cast`.';';	print "Controlas $numpeq animales($animal) del tamanio de una rata gigante, $nummed del tamanio de un hombre y $numgran de medi tonelada o mas."
+Delusion		print "Te crees que te has tomado otra pocion"
+Dragon Control		print "Controlas un dragon durante rounds: " . `echo 5d4 | cast`;
+ExtraHealing		print "Frasco entero, " . `echo 3d8+3 | cast` . "Un tercio " . `echo 1d8 | cast`;
+Healing		print "Frasco entero, " . `echo 2d4+2 | cast`;
+Plant Control	print '$duration='.`echo 5d4|cast`.';';	print "Controlas todas las plantas en un radio de 3 metros durante rounds: $duration";
+Poison		
