@@ -1,0 +1,1 @@
+$roll = $roll + 2; print "Defender off-balance";

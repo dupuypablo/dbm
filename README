@@ -10,6 +10,7 @@ tohit	attackand and target, calculates the tohit value
 wh	where is the character?
 statusplayer	print the status of a player
 addr	get the email address of a character
+build 	build tienda[mostrador,armarios,escalera[6habitacion[cama,mesita]]]
 create
 multicreate
 newcont	newcont Mochila pMurray 

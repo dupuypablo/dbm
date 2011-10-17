@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+$i=0;
+$list = `cat $ARGV[0] | cut -f1`;
+@mylist = split("\n",$list);
+for (@mylist)
+{
+print STDERR "$i: $_\n";
+$i=$i+1;
+}
+
+$i = (<STDIN>);
+$t = $mylist[$i];
+$t = "'$t'" if $t =~ /\s/;
+print $t;

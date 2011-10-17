@@ -1,0 +1,5 @@
+#!/usr/bin/perl
+
+$WORLD = $ENV{'WORLD'};
+
+rooc

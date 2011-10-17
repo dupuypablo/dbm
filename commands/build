@@ -1,0 +1,35 @@
+#!/usr/bin/perl
+
+for $el (@ARGV)
+{
+if ($el =~ /^(\S+?)\[(.*)\]$/)
+{
+  #$1 is the name
+  #$2 are the things inside
+    $choclo = $2;
+  while($choclo =~ s/(\[.*?),(.*?\])/${1}MYMASK$2/g){;}
+  
+  @things = split(/,/ ,$choclo);
+  @things = map{ `echo $_ | cast`} @things;
+  chomp(@things);
+  for (@things)
+  {
+    s/MYMASK/,/g;
+    if (/^(\d+)(\w.*)$/)
+    {
+    	push @newthings, "nr$_$2" for (1..$1);
+    }else{
+        push @newthings, $_;
+    }
+  }
+  $str = " " . join(" ",@newthings);
+  $lis = `build $str`;
+  `mkdir $1` if not $1 =~ /\[/;
+  #`mv * .$1`;
+  map{`mv $_ $1/$_`} split(" ", $lis);
+  print "$1 ";
+}
+
+}
+for $el (@ARGV)
+{`echo '' > $el` if not ($el =~ /^(\w+)\[(.*)\]$/);print "$el ";}

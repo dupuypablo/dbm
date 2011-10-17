@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+$WORLD = $ENV{'WORLD'};
+$who = $ARGV[0]; #name of the guy
+chop($who) if (substr($who,-1,1) eq '/');
+unless (-e "$who"){$who =~  s/([A-Z]\w*)$/p$1/ if not ($who =~ /p[A-Z]\w*$/);}
+$who = "$WORLD/characters/$who" if not (-e "$who");
+die("Wrong character $who.") if not (-e "$who");
+$name=$who;
+
+$a = `choose ../tables/combatmodifiers`;
+print STDERR $a;
+$a = `cat ../tables/combatmodifiers | grep $a`;chomp($a);
+@mod = split("\t",$a);
+
+$str='$roll = $roll + ' .$mod[1] .'; print "' . $mod[0] . '";';
+
+open F, ">$name/.mod";
+print F $str;
+close F;

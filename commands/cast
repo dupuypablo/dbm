@@ -27,6 +27,15 @@ if (s/(\d+)d(\d+)//)
             case "/"    {$str = $str/$2}
         }
     }
+    while ( s/([><=])(\d+)//)
+    {    
+        switch ($1){
+            case (">")    {$str = ($str > $2)}
+            case "<"    {$str = ($str < $2)}
+            case "="    {$str = ($str == $2)}
+        }
+	$str = $str+0;
+    }
     $str = "$str$_";
 }else{
     # Can do boundary checking in the future
