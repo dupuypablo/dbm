@@ -1,0 +1,1 @@
+El puesto de control, funciona como aduana e imigraciones, revisando el trafico de todo mercante que entra y sale del puerto. La barcos que entran al rio se controlan cada dia. El puerto profundo se controla cada semana, menos trafico de barcos alli.

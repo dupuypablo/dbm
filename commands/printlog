@@ -27,8 +27,8 @@ $l =~ s/\"//g;
   @col = split('\t',$l);
   $who = $col[0];
   $txt = $col[1];
-  $txt=~ /([^\.]*)\./;
-  $tit = $1;
+#  $txt=~ /([^\.]*)\./;
+#  $tit = $1;
   $hs=$time;
   $h = ($hs % 24);
   $min = int(($h-int($h))*60);
@@ -42,7 +42,8 @@ $l =~ s/\"//g;
   #print $who, $1, $2;
   $val = $2;
   $i=0+$nrows{$1};
-  $datarow{$1} =$datarow{$1} . "data.setValue($i, 0, new Date($y, 0, $d, $h, $min, $s));data.setValue($i, 1, $val);data.setValue($i, 2, '$1:$tit');data.setValue($i, 3, '$txt');\n";
+  $datarow{$1} =$datarow{$1} . "data.setValue($i, 0, new Date($y, 0, $d, $h, $min, $s));data.setValue($i, 1, $val);data.setValue($i, 2, ' ');data.setValue($i, 3, '$txt');\n";
+#$1 $tit
   $nrows{$1} = $nrows{$1}+1;
   }
   $s++;

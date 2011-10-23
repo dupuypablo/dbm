@@ -1,0 +1,3 @@
+#potionsPlantControl
+$duration=8
+;print "Controlas todas las plantas en un radio de 3 metros durante rounds: $duration";

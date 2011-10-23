@@ -1,0 +1,12 @@
+Wolf	Wolf
+Size	M
+Frequency	20
+Treasure	0
+Alignment	NN
+AC	7
+HP	11
+THAC0	18
+Morale	10
+XP	120
+Intelligence	6
+Attacks	teeth:1d4+1

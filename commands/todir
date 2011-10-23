@@ -14,7 +14,7 @@ close F;
 $tr = `pick $who/.i - Treasure`;
  chomp($tr);
 
-unless ($tr eq '')
+unless ($tr eq '' || $tr eq '0')
 {
  $tr = `cat $WORLD/tables/treasure | grep -E '^$tr'`;
  chomp($tr);
@@ -54,7 +54,8 @@ unless ($at eq '')
   @mat = split(',',$at);
   for $myat (@mat)
   {
-  	`echo "Item\t$1\nS\t$2\nM\t$2\nL\t$2\n" > $who/$1` if ($myat =~ /(.*):(.*)/);
+  	`echo "Item\t$1\nS\t$2\nM\t$2\nL\t$2\n" > $who/$1` if ($myat =~ /(.*):(.*)$/);
+  	`echo "Item\t$1\nS\t$2\nM\t$3\nL\t$4\n" > $who/$1` if ($myat =~ /(.*):(.*)\/(.*)\/(.*)/);
 	`use $who/$1`;
   }
 }

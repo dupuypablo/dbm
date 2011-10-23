@@ -29,8 +29,10 @@ if ($xp >= $xpneeded)
   print STDERR "LVL UP $who! $class $askfor\n";
   $hd = `pick $WORLD/tables/hitdices $class $askfor | cast`;
   chomp($hd);
-  print STDERR "+$hd hitpoints";
-  $sumhp = $oldhp+$hd;
+  $abhd = `pick $who/.ab - HitPointAdjustment`;
+  chomp($abhd);
+  print STDERR "+$hd+$abhd hitpoints";
+  $sumhp = $oldhp+$hd+$abhd;
   `cat ~/tables/$class | rotatetable | grep -i -E 'thac0|$askfor' | rotatetable > $who/.$askfor`;
   `echo 'HP\t$sumhp' >> $who/.$askfor`;
   `rm $who/.lastlvl`;

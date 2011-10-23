@@ -34,32 +34,46 @@ foreach $i (sort {$a <=> $b} keys (%init) )
 	 $sizeoftg = `pick $s/.i - Size`;
 	 chomp($sizeoftg);
 	 $sizeoftg = 'M' if ($sizeoftg eq '');
-	 
+
 	 unless ($th eq '')
 	 { 
 	   chomp($life);
-	   print "($i) $s attacking $tg ($sizeoftg, $life hp). Rolled $roll, $th \n";
+	   print "txt+($i) $s attacking $tg ($sizeoftg, $life hp). Rolled $roll, $th \n";
+	   $descr{$i}="$s ataca a $tg";
 	   if ($roll > $th)
 	   {
 	        $damage = `pick $s/.using - $sizeoftg | cast`;
+		chomp($damage);
+                print "danio de dado: $damage\n";
 		$damage = $damage + `pick $s/.ab - DamageAdjust`;
 		chomp($damage);
-	   	print "HIT with $damage de danio!\n";
+	   	print "txt+ HIT with $damage de danio!\n";
+		$descr{$i} =$descr{$i}."y acierta!";
 		$hp = `echo '-$damage' | hp $tg`;
 		if ($hp <= 0)
 		{
 		  print "Murio!\n";
 		  `pick $tg/.i - XP | sumxp $s;`;
 		}
+	   }else{
+	       print "txt+ $s falla... \n";
+	       $descr{$i} =$descr{$i} . ", pero falla.";
+	# }else{
+	#   print "($i) $s attacking $tg. \n";
 	   }
-	   
-	 }else{
-	   print "($i) $s attacking $tg. \n";
-
 	 }
 	 `rm $s/.attack`;
 	 
-        }
+        
         print "txt:";
-        $descr{$i} = <>;
+        $txt = <>;
+	 chomp($txt);
+	 $descr{$i} = $descr{$i} . $txt;
+	 $descr{$i} = $txt if ($txt =~ /^!/);
+         print "Escribiendo: $descr{$i}\n";
+	 $s=~ s/^p//;  $tg=~ s/^p//;
+	 `echo $descr{$i} | log $s`;
+	 `echo $descr{$i} | log $tg`;
+	 }
+
 }

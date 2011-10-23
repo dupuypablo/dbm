@@ -1,0 +1,9 @@
+Item	Espada larga
+Cost	15 gp
+Weight	1.8
+Size	m
+Type	s
+SpeedFactor	5
+S	1d8
+M	1d8
+L	1d12

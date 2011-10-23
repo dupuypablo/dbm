@@ -3,6 +3,6 @@ $WORLD = $ENV{'WORLD'};
 $pers = $ARGV[0];
 $remove = '/\..*$';
 $sed = 's/\/.*\///g';
-print `find $pers/ 2>&- | grep -v -E '$remove' | sed '$sed' | cat - $pers/.i $pers/.lastlvl $pers/.hp  $pers/pcs  2>&-`;
+print `find $pers/ 2>&- | grep -v -E '$remove' | sed '$sed' | cat - $pers/.i $pers/.lastlvl $pers/.hp  $pers/.ab  $pers/pcs  2>&-`;
 print "\n";
 print `tictac 0>&-`;

@@ -1,0 +1,8 @@
+Name	Armor
+Range	Touch
+Duration	Hasta que el danio recibido sea 8pts * lvl caster + 1
+Area	Una criatura
+Components	V,S,M
+CastingTime	1
+SavingThrow	0
+Description	CA de 6, no es acumulativo con armaduras o con el hechizo Shield.

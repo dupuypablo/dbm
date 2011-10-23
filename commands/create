@@ -15,16 +15,21 @@ die("create listfile object.");
 }
 $elemento = $ARGV[1];
 $s =  `cat $WORLD/tables/$lista | grep -i -E '^Item\\s|^$elemento\\s' | rotatetable`;
-print STDERR $s;
+#print STDERR $s;
 $s =~ /^(.*?)\n/;
 $t = $1;
 $t =~ s/\s+//g;
-print $t;
+die if ($t eq 'Item');
 if ($#ARGV == 2)
 {
-open F, ">$ARGV[2]";
+$name = $ARGV[2];
 }else{
-open F, ">$lista$t";
+$name = "$lista$t";
 }
+$name = "${name}1" if (not ($name=~ /\d$/)) and (-e $name);	
+$name++ while (-e $name);
+
+open F, ">$name";
+print "$name";
 print F $s;
 close F;

@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+for (@ARGV)
+{
+$old = $_;
+s/(\d+)([\w\d]*?)$/$1-1 . $2/e;
+`mv $old $_`;
+`remove $_` if $1==1;
+}

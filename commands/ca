@@ -17,4 +17,12 @@ for (@modcalist)
 {
 $s += $_ ;
 }
+
+$modca = `cat $who/armor* 2>&- | grep CA | cut -f2 `;
+@modcalist = split("\n",$modca);
+for (@modcalist)
+{
+    $s -= $_ ;
+}
+
 print $s;

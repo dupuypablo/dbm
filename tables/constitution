@@ -13,10 +13,10 @@ Score	HitPointAdjustment	SystemShock	ResurrectionSurvival	PoisonSave	Regeneratio
 12	0	80	85	0	0
 13	0	85	90	0 	0
 14	0	88	92	0 	0
-15	0	90	94	0 	0
-16	1	95	96	0 	0
-17	2	97	98	0 	0
-18	3	99	100	0 	0
-19	4	99	100	1 	0
+15	1	90	94	0 	0
+16	2	95	96	0 	0
+17	3	97	98	0 	0
+18	4	99	100	0 	0
+19	5	99	100	1 	0
 20	5	99	100	1 	0.166666
 

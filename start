@@ -3,6 +3,4 @@ PATH=$WORLD:$WORLD/commands:$WORLD/time:$PATH
 export WORLD
 export PATH
 git pull
-bash
-git commit -m 'done for today'
-git push -u origin master
+`cat ./.lastdir`

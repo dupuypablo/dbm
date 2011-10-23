@@ -10,7 +10,7 @@ tohit	attackand and target, calculates the tohit value
 wh	where is the character?
 statusplayer	print the status of a player
 addr	get the email address of a character
-build 	build tienda[mostrador,armarios,escalera[6habitacion[cama,mesita]]]
+build 	build tienda[mostrador,armarios,escalera[6habitacion[cama,mesita]]]  build quarrier[2silla0,mesa,armarios,estanterias,taller[mesadetrabajo,banco],cuarto[cama,mesita,armario]]
 create
 multicreate
 newcont	newcont Mochila pMurray 
@@ -33,7 +33,6 @@ sumxp	sumxp pMurray
 
 resolve	ordena por iniciativa, calcula to hit, lee hit points.
 
-TODO: que el attack de google talk, o linux, lean ataque preseleccionado del animal.
 
 .using is a link to arma o similar. arma o conjuro, tienen una accion default.
 actuar command que inspecciona .using. si es un arma ataca, si es un conjuro lo usa, etc.
@@ -76,3 +75,23 @@ ca
 combat is resolve 
 
 overview interactivo para ver quien ataca a quien. (si archivo attack esta definido y si target es correcto y si using esta definido)
+
+
+ls | tr '\n' '\t' > .map
+
+
+TODO:
+%nextlevel extra vida a Roberto
+%arreglar attack
+spells y magia para Pepe
+attaque to write til log
+iniciativa de arma
+tabla de libras a kilogramos
+%consume
+multipleiniciativa, multiples ataques 2 ataques per round: 1d10 < 
+
+10 -> listo
+
+1d10:1 -> 1d10:
+
+mkfifo pMurray/.fifo

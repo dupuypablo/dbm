@@ -1,5 +1,5 @@
-Armor	Cost	Weight	CA	S	P	B
-Banded	200gp	15	7	2	0	1
+Item	Cost	Weight	CA	S	P	B
+Banded	200gp	15	6	2	0	1
 Brigandine	120gp	15	4	1	1	0
 Chain	75gp	18	5	2	0	-2
 FieldPlate	2000gp	27	8	3	1	0
@@ -11,4 +11,4 @@ Ring	100gp	13	3	1	1	0
 Scale	120gp	18	4	0	1	0
 Splint	80gp	18	6	0	1	2
 StuddedLeather	20gp	11	3	2	1	0
-Shield			1
+Shield	5gp	5	1

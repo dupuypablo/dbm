@@ -4,11 +4,18 @@
 $who = $ARGV[0];
 $N = `pick $who - Number | cast`;
 print STDERR $N;
+if ($N < 2)
+{
+`cat $who | grep -v '^Number' | mysed > /tmp/tempfile`;
+`move  /tmp/tempfile $who`;
+ print "$who\n";
+}
+else{
 for $i (1..$N)
 {
  print STDERR $i;
 `cat $who | grep -v '^Number' | mysed > $who$i`;
  print "$who$i\n";
 }
-
 `remove $who`;
+}

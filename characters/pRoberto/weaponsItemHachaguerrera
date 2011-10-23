@@ -1,0 +1,9 @@
+Item	Hacha guerrera
+Cost	5 gp
+Weight	3.17
+Size	m
+Type	s
+SpeedFactor	7
+S	1d8
+M	1d8
+L	1d8

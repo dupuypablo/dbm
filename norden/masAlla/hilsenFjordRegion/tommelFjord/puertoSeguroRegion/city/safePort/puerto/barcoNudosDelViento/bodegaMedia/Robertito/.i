@@ -1,0 +1,10 @@
+Title	Wizard
+Frequency	4
+Treasure	L
+Alignment	CG
+Number	7
+AC	10
+HP	9
+THAC0	20
+Morale	10
+XP	100

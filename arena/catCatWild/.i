@@ -1,0 +1,13 @@
+Cat	Wild
+Size	S
+Frequency	20
+Treasure	0
+Alignment	NN
+Number	1
+AC	5
+HP	1d4
+THAC0	19
+Morale	9
+XP	35
+Intelligence	1
+Attacks	claw:1d2

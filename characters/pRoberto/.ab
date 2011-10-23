@@ -10,7 +10,7 @@ ReactionAdj	0
 MissileAttackAdj	0
 DefensiveAdj	0
 constitutionScore	16
-HitPointAdjustment	1
+HitPointAdjustment	2
 SystemShock	95
 ResurrectionSurvival	96
 PoisonSave	0 

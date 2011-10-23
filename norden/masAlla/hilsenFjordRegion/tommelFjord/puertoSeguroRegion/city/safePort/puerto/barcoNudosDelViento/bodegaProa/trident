@@ -1,0 +1,9 @@
+Item	Cuchillo
+Cost	5 sp
+Weight	0.25
+Size	s
+Type	ps
+SpeedFactor	2
+S	1d3
+M	1d3
+L	1d2

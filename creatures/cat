@@ -1,0 +1,3 @@
+Cat	Size	Frequency	Treasure	Alignment	Number	AC	HP	THAC0	Morale	XP	Intelligence	Attacks
+Wild	S	20	0	NN	1	5	1d4	19	9	35	1	claw:1d2
+Smilodon	L	4	0	NN	1d2	6	7d8+2	11	9	1400	1	claw:1d4+1/1d4+1/2d6,rearclaws:2d4

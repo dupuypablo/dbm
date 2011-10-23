@@ -2,13 +2,20 @@
 
 for $el (@ARGV)
 {
-if ($el =~ /^(\S+?)\[(.*)\]$/)
+if ($el =~ /^(\d*\w+\d*)\[(.*)\]$/)
 {
+    print STDERR "($1<<$2>>\n";
   #$1 is the name
   #$2 are the things inside
     $choclo = $2;
-  while($choclo =~ s/(\[.*?),(.*?\])/${1}MYMASK$2/g){;}
-  
+  #while(($choclo =~ s/(\[[\w\d]*?),([^\]]*?\])/${1}MYMASK$2/g) and ($choclo =~ s/([\]\[][\w\d]*?),([\w\d]*?\])/${1}MYMASK$2/g) and ($choclo =~ s/(\[[\w\d]*\[[\w\d]*),([\w\d]*\][\w\d]*\])/${1}MYMASK$2/g) and ($choclo =~ s/(\[[\w\d]*\[[\w\d]*\[[\w\d]*),([\w\d]*\][\w\d]*\][\w\d]*\])/${1}MYMASK$2/g)){;}
+#    print STDERR "<$choclo>";
+    $str='';
+    $b=0;
+    foreach (split //, $choclo){$b++ if ($_ eq '['); $b-- if ($_ eq ']'); $str = $str .( ($_ eq ',' && $b>0 )?'MYMASK':$_)}
+
+    $choclo=$str;
+#print STDERR "<$choclo>";
   @things = split(/,/ ,$choclo);
   @things = map{ `echo $_ | cast`} @things;
   chomp(@things);
@@ -17,19 +24,53 @@ if ($el =~ /^(\S+?)\[(.*)\]$/)
     s/MYMASK/,/g;
     if (/^(\d+)(\w.*)$/)
     {
-    	push @newthings, "nr$_$2" for (1..$1);
+    	#push @newthings, "nr$_$2" for (1..$1);
+	push @newthings, "$2" for (1..$1);
+	print STDERR $2;	
     }else{
         push @newthings, $_;
     }
   }
   $str = " " . join(" ",@newthings);
-  $lis = `build $str`;
+  $lis = `build $str 0>&-`; #
   `mkdir $1` if not $1 =~ /\[/;
   #`mv * .$1`;
   map{`mv $_ $1/$_`} split(" ", $lis);
   print "$1 ";
+  $dir=$1;
 }
 
 }
 for $el (@ARGV)
-{`echo '' > $el` if not ($el =~ /^(\w+)\[(.*)\]$/);print "$el ";}
+{
+if  (not $el =~ /^(\w+)\[(.*)\]$/)
+{
+#$nyel = $el;
+
+$file = `create building $el $el `;
+chomp ($file);
+if ($file eq '') #if create dies
+{
+  $el++ while (-e $el);
+  `echo''>$el`;
+  }else{
+  $a='multiply '. $file . " | perl -ne '". '`todir $_`; print $_' . "'";
+#  print STDERR "file: $file\na: $a\n";
+#  (<STDIN>);
+  
+  $el = `$a`;
+#    print STDERR "el: $el\n";
+#  (<STDIN>);
+
+}
+print "$el ";
+}
+}
+
+$txt  = (<STDIN>);
+if ($txt)
+{
+open F, ">$dir/.txt";
+print F $txt;
+close F;
+}

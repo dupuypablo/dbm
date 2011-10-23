@@ -1,0 +1,5 @@
+#potionsAnimalControl
+$animal='cualquiera';$numpeq=12
+;$nummed=9
+;$numgran=3
+;print "Controlas $numpeq animales($animal) del tamanio de una rata gigante, $nummed del tamanio de un hombre y $numgran de medi tonelada o mas."

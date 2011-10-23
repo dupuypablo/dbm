@@ -1,0 +1,1 @@
+Granero con entrada para animales, y deposito de granos.

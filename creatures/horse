@@ -1,0 +1,9 @@
+Horse	Frequency	Intelligence	Treasure	Alignment	Number	AC	HP	THAC0	Size	Morale	XP	Attacks	NoAttacks FullSpeedWgt	HalfSpeedWgt	ThirdSpeedWgt	Walk	Trot	Canter	Gallop
+Draft	65	1	0	NN	1	7	3d8	17	L	6	65	kick:1d3	1	260	390	520	6	12	18	24
+Heave	20	1	0	NN	1	7	3d8+3	17	L	6	120	kick:1d8	3	260	390	520	6	15	21	27
+Medium	20	1	0	NN	1	7	2d8+2	19	L	6	65	kick:1d6	3	220	330	440	9	18	27	36
+Light	20	1	0	NN	1	7	2d8	19	L	6	35	kick:1d4	2	170	255	340	12	24	36	48
+Pony	20	1	0	NN	1	7	1d8+1	19	M	6	35	kick:1d2	1	160	240	320	6	12	18	24
+Wild	20	1	0	NN	5d6	7	2d8	19	L	6	35	kick:1d3	1	170	255	340	12	24	36	48
+Riding	65	1	0	NN	5d10	7	3d8	17	L	6	65	kick:1d2	2	180	270	360	12	24	36	48
+Mule	65	1	0	NN	1	7	3d8	17	M	6	65	kick:1d2	1	250	375	500	6	12	18	24

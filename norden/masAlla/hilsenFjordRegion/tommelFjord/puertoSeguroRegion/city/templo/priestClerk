@@ -1,0 +1,10 @@
+Title	Priest
+Frequency	4
+Treasure	J,K,M
+Alignment	Any
+Number	1d8
+AC	10
+HP	1d6
+THAC0	20
+Morale	8
+XP	15

@@ -1,0 +1,8 @@
+Name	UnseenServant
+Range	0
+Duration	1hr + 1 lvl caster
+Area	10 mts radio 
+Components	V,S,M(pedazo de cuerda o madera)
+CastingTime	1
+SavingThrow	0
+Description	Una fuerza invisible, sin mente ni forma usada para destrabar puertas, o alcanzar cosas, sostener cadenas, limpiar, etc. Puede llevar 9 kg, o empujar 18 kg.  Si se va muy lejos, desaparece. 

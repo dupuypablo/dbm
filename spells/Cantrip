@@ -1,0 +1,7 @@
+Name	Cantrip
+Range	3 mts
+Duration	1 hr * lvl
+Area	Especial
+Components	V,S
+CastingTime	1
+SavingThrow	0

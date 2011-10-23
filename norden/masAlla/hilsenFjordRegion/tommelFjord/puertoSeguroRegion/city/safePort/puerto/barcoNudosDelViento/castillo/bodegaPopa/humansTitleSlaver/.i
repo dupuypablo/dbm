@@ -1,0 +1,10 @@
+Title	Slaver
+Frequency	65
+Treasure	0
+Alignment	Any
+Number	1d100
+AC	10
+HP	1d6
+THAC0	20
+Morale	9
+XP	15

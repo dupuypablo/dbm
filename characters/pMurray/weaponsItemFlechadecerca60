@@ -1,0 +1,9 @@
+Item	Flecha de cerca
+Cost	0.5 sp
+Weight	0.05
+Size	s
+Type	p
+SpeedFactor	5
+S	1d8
+M	1d8
+L	1d8

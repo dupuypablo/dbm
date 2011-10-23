@@ -1,0 +1,1 @@
+Silo para guardar articulos de agricultura, fertilizantes, tierra y sacos de grano importados del continente.
